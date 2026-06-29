@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2026-05-19T00:00:00Z" product-name="fp-fileprotector">
+		<header/>
+		<body>
+			<!-- File Storage -->
+			<trans-unit id="sys_file_storage.palettes.protection">
+				<source>Access Protection</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.protected">
+				<source>Protected File Storage</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.protected_by_default">
+				<source>Deny access if no release rule exists</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.htaccess_existing">
+				<source>.htaccess configured</source>
+			</trans-unit>
+
+			<!-- Protection -->
+			<trans-unit id="tx_fpfileprotector_domain_model_protection">
+				<source>Access Protection</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.palette.folder">
+				<source>Storage Location</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.palette.fe">
+				<source>Frontend</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.palette.be">
+				<source>Backend</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.storage">
+				<source>Storage</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.folder">
+				<source>Folder</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.fe_login">
+				<source>Must be logged in to the frontend</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.user_groups">
+				<source>User Groups</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.users">
+				<source>Users</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.be_login">
+				<source>Must be logged in to the backend</source>
+			</trans-unit>
+
+			<!-- General -->
+			<trans-unit id="general.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="general.no">
+				<source>No</source>
+			</trans-unit>
+			<trans-unit id="general.discard">
+				<source>Discard</source>
+			</trans-unit>
+
+			<!-- Module Layout -->
+			<trans-unit id="module.title">
+				<source>Directory Protection</source>
+			</trans-unit>
+			<trans-unit id="module.storage_is_protected">
+				<source>This storage is protected</source>
+			</trans-unit>
+			<trans-unit id="module.storage_is_unprotected">
+				<source>This storage is not protected</source>
+			</trans-unit>
+			<trans-unit id="module.dropdown.storage_settings">
+				<source>Edit storage settings</source>
+			</trans-unit>
+			<trans-unit id="module.dropdown.htaccess_update">
+				<source>Update .htaccess</source>
+			</trans-unit>
+
+			<!-- Rootline Partial -->
+			<trans-unit id="rootline.all_storages">
+				<source>All Storages</source>
+			</trans-unit>
+
+			<!-- Protection FormFields Partial -->
+			<trans-unit id="protection.form.multiselect_hint">
+				<source>Multiple selection / Remove with Ctrl key held!</source>
+			</trans-unit>
+			<trans-unit id="protection.form.selection_condition_hint">
+				<source><![CDATA[This selection is only considered if the checkbox <i>"%1$s"</i> has been activated.]]></source>
+			</trans-unit>
+
+			<!-- FileStorage/Edit -->
+			<trans-unit id="file_storage.edit.heading">
+				<source>Edit Storage %1$s</source>
+			</trans-unit>
+			<trans-unit id="file_storage.edit.discard">
+				<source>Discard changes</source>
+			</trans-unit>
+			<trans-unit id="file_storage.edit.save">
+				<source>Save changes</source>
+			</trans-unit>
+
+			<!-- FileStorage/List -->
+			<trans-unit id="file_storage.list.heading">
+				<source>Storage Overview</source>
+			</trans-unit>
+			<trans-unit id="file_storage.list.htaccess_warning">
+				<source>WARNING!</source>
+			</trans-unit>
+			<trans-unit id="file_storage.list.htaccess_exists_but_no_protection">
+				<source>.htaccess configured, although no protection should exist!</source>
+			</trans-unit>
+			<trans-unit id="file_storage.list.htaccess_adjust">
+				<source>Adjust .htaccess file</source>
+			</trans-unit>
+			<trans-unit id="file_storage.list.htaccess_missing_but_protection">
+				<source>No .htaccess configured, although protection should exist!</source>
+			</trans-unit>
+
+			<!-- FileStorage/Show -->
+			<trans-unit id="file_storage.show.heading">
+				<source>Protected Folders of Storage</source>
+			</trans-unit>
+			<trans-unit id="file_storage.show.access_free">
+				<source>Access freely available</source>
+			</trans-unit>
+			<trans-unit id="file_storage.show.access_free_description">
+				<source>Anyone can access this folder.</source>
+			</trans-unit>
+			<trans-unit id="file_storage.show.access_restricted">
+				<source>Access with permission only</source>
+			</trans-unit>
+			<trans-unit id="file_storage.show.access_restricted_description">
+				<source>Only authorised persons can access this folder.</source>
+			</trans-unit>
+			<trans-unit id="file_storage.show.no_access">
+				<source>No access</source>
+			</trans-unit>
+			<trans-unit id="file_storage.show.no_access_description">
+				<source>Nobody can access this folder.</source>
+			</trans-unit>
+			<trans-unit id="file_storage.show.inherited">
+				<source>(inherited)</source>
+			</trans-unit>
+
+			<!-- Folder/Show -->
+			<trans-unit id="folder.show.heading">
+				<source>Access Protection for Folder</source>
+			</trans-unit>
+			<trans-unit id="folder.show.storage_not_protected">
+				<source>This storage is not protected!</source>
+			</trans-unit>
+			<trans-unit id="folder.show.storage_not_protected_with_rule">
+				<source>You have created an access rule, but it will not take effect until you define this storage as a "Protected Storage".</source>
+			</trans-unit>
+			<trans-unit id="folder.show.storage_settings_link">
+				<source>Go to storage settings</source>
+			</trans-unit>
+			<trans-unit id="folder.show.storage_not_protected_no_rule">
+				<source>You can create access rules, but they will not take effect until you define this storage as a "Protected Storage".</source>
+			</trans-unit>
+			<trans-unit id="folder.show.folder_protected">
+				<source>This folder is protected!</source>
+			</trans-unit>
+			<trans-unit id="folder.show.folder_not_protected">
+				<source>This folder is not protected!</source>
+			</trans-unit>
+			<trans-unit id="folder.show.folder_no_access">
+				<source>This folder cannot be accessed!</source>
+			</trans-unit>
+			<trans-unit id="folder.show.own_protection_exists">
+				<source>You have created an access protection for this folder.</source>
+			</trans-unit>
+			<trans-unit id="folder.show.inherited_protection">
+				<source><![CDATA[This folder has inherited its access protection from the folder %1$s.]]></source>
+			</trans-unit>
+			<trans-unit id="folder.show.inherited_protection_no_condition">
+				<source><![CDATA[This folder has inherited its access protection from the folder %1$s, but it contains no conditions.]]></source>
+			</trans-unit>
+			<trans-unit id="folder.show.own_protection_no_conditions">
+				<source>You have created an access protection for this folder, but it contains no conditions.</source>
+			</trans-unit>
+			<trans-unit id="folder.show.no_own_protection">
+				<source>You have not yet created an access protection for this folder.</source>
+			</trans-unit>
+			<trans-unit id="folder.show.inaccessible_with_empty_protection">
+				<source>An access protection is defined for this folder, but it contains no access conditions.</source>
+			</trans-unit>
+			<trans-unit id="folder.show.inaccessible_protected_by_default">
+				<source>Since the storage is configured so that folders without access protection are locked, nobody can access the contents of this folder.</source>
+			</trans-unit>
+			<trans-unit id="folder.show.inaccessible_no_protection">
+				<source>No access protection has been defined for this folder yet.</source>
+			</trans-unit>
+			<trans-unit id="folder.show.subfolders_heading">
+				<source>Access Protection for Subfolders</source>
+			</trans-unit>
+			<trans-unit id="folder.show.column_name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="folder.show.edit_protection">
+				<source>Edit access protection</source>
+			</trans-unit>
+			<trans-unit id="folder.show.delete_protection">
+				<source>Delete access protection</source>
+			</trans-unit>
+			<trans-unit id="folder.show.create_protection">
+				<source>Create access protection</source>
+			</trans-unit>
+
+			<!-- Protection/Edit -->
+			<trans-unit id="protection.edit.heading_suffix">
+				<source>update</source>
+			</trans-unit>
+			<trans-unit id="protection.edit.save">
+				<source>Update access protection</source>
+			</trans-unit>
+
+			<!-- Protection/New -->
+			<trans-unit id="protection.new.heading_suffix">
+				<source>create</source>
+			</trans-unit>
+
+			<!-- FlashMessages -->
+			<trans-unit id="sys_file_storage.errors.storage_not_found">
+				<source>The storage could not be found.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.errors.file_not_found">
+				<source>The file could not be found.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.errors.folder_not_found">
+				<source>The storage location could not be found.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.errors.access_denied">
+				<source>Access denied.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.errors.file_release_not_found">
+				<source>The requested file could not be found.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.flashmessages.updated">
+				<source>The file storage settings have been updated.</source>
+			</trans-unit>
+			<trans-unit id="sys_file_storage.flashmessages.htaccess">
+				<source>The .htaccess file has been updated.</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.flashmessages.created">
+				<source>The access protection has been created.</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.flashmessages.updated">
+				<source>The access protection has been updated.</source>
+			</trans-unit>
+			<trans-unit id="tx_fpfileprotector_domain_model_protection.flashmessages.deleted">
+				<source>The access protection has been removed.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guide xmlns="https://www.phpdoc.org/guides" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://www.phpdoc.org/guides ../vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd">
+    <project title="fp-fileprotector"/>
+    <extension
+        class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+        github-organization="fixpunkt"
+        github-repository="fp-fileprotector"
+        typo3-core-preferred="stable"
+    />
+</guide>

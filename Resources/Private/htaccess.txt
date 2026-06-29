@@ -1,0 +1,5 @@
+#### fp-fileprotector configuration start ####
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /fp_fileprotector?tx_fpfileprotector[check]=1 [NC,L,QSA]
+#### fp-fileprotector configuration end ####

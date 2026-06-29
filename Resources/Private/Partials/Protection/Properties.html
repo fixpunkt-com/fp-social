@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <div class="form-group">
+      <label for="feLogin">
+        <f:translate key="tx_fpfileprotector_domain_model_protection.fe_login" />:
+      </label><br>
+      <f:if condition="{protection.feLogin}">
+        <f:then><span class="text-success"><f:translate key="general.yes" /></span></f:then>
+        <f:else><span class="text-danger"><f:translate key="general.no" /></span></f:else>
+      </f:if>
+    </div>
+  </div>
+  <f:if condition="{protection.feLogin}">
+    <f:if condition="{protection.userGroups -> f:count()}">
+      <div class="col-xs-12 col-md-4">
+        <div class="form-group">
+          <label for="userGroups">
+            <f:translate key="tx_fpfileprotector_domain_model_protection.user_groups" />:
+          </label>
+          <ul>
+            <f:for each="{protection.userGroups}" as="userGroup">
+              <li>{userGroup.title}</li>
+            </f:for>
+          </ul>
+        </div>
+      </div>
+    </f:if>
+    <f:if condition="{protection.users -> f:count()}">
+      <div class="col-xs-12 col-md-4">
+        <div class="form-group">
+          <label for="users">
+            <f:translate key="tx_fpfileprotector_domain_model_protection.users" />:
+          </label>
+          <ul>
+            <f:for each="{protection.users}" as="user">
+              <li>{user.username}</li>
+            </f:for>
+          </ul>
+        </div>
+      </div>
+    </f:if>
+  </f:if>
+</div>
+<div class="form-group">
+  <label for="beLogin">
+    <f:translate key="tx_fpfileprotector_domain_model_protection.be_login" />:
+  </label><br>
+  <f:if condition="{protection.beLogin}">
+    <f:then><span class="text-success"><f:translate key="general.yes" /></span></f:then>
+    <f:else><span class="text-danger"><f:translate key="general.no" /></span></f:else>
+  </f:if>
+</div>

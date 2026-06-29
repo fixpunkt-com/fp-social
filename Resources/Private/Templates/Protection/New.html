@@ -1,0 +1,17 @@
+<f:layout name="Module" />
+
+<f:section name="Content">
+    <h2><f:translate key="folder.show.heading" /> <span class="text-info">{folder.name}</span> <f:translate key="protection.new.heading_suffix" /></h2>
+
+    <f:form action="create" object="{protection}" objectName="protection">
+        <f:form.hidden property="storage" value="{folder.storage.uid}" />
+        <f:form.hidden property="folder" value="{folder.identifier}" />
+
+        <f:render partial="Protection/FormFields" arguments="{_all}" />
+
+        <div>
+            <f:link.action action="show" controller="Folder" arguments="{id : folder.combinedIdentifier}" class="btn btn-default"><f:translate key="general.discard" /></f:link.action>
+            <f:form.button type="submit" class="btn btn-success"><f:translate key="folder.show.create_protection" /></f:form.button>
+        </div>
+    </f:form>
+</f:section>

@@ -1,0 +1,16 @@
+module.tx_fpfileprotector {
+	view {
+		templateRootPaths {
+			0 = {$module.tx_fpfileprotector.view.templateRootPath}
+		}
+		partialRootPaths {
+			0 = {$module.tx_fpfileprotector.view.partialRootPath}
+		}
+		layoutRootPaths {
+			0 = {$module.tx_fpfileprotector.view.layoutRootPath}
+		}
+	}
+	persistence {
+		storagePid = {$module.tx_fpfileprotector.persistence.storagePid}
+	}
+}

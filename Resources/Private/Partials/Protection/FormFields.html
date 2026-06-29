@@ -1,0 +1,47 @@
+<h3>
+  <f:translate key="tx_fpfileprotector_domain_model_protection.palette.fe" />
+</h3>
+<div class="checkbox">
+  <label for="feLogin">
+    <f:form.checkbox value="1" property="feLogin" /> <f:translate key="tx_fpfileprotector_domain_model_protection.fe_login" />
+  </label>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="form-group">
+      <label for="userGroups">
+        <f:translate key="tx_fpfileprotector_domain_model_protection.user_groups" />
+      </label>
+      <f:form.select multiple="1" size="3" sortByOptionLabel="1" options="{userGroups}" optionValueField="uid" optionLabelField="title" property="userGroups" class="form-control" />
+      <div class="small">
+        <div class="text-muted"><f:translate key="protection.form.multiselect_hint" /></div>
+        <f:format.raw>
+          <div class="text-warning"><f:translate key="protection.form.selection_condition_hint" arguments="{0 : '{f:translate(key : \'tx_fpfileprotector_domain_model_protection.fe_login\')}'}" /></div>
+        </f:format.raw>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="form-group">
+      <label for="users">
+        <f:translate key="tx_fpfileprotector_domain_model_protection.users" />
+      </label>
+      <f:form.select multiple="1" size="3" sortByOptionLabel="1" options="{users}" optionValueField="uid" optionLabelField="username" property="users" class="form-control" />
+      <div class="small">
+        <div class="text-muted"><f:translate key="protection.form.multiselect_hint" /></div>
+        <f:format.raw>
+          <div class="text-warning"><f:translate key="protection.form.selection_condition_hint" arguments="{0 : '{f:translate(key : \'tx_fpfileprotector_domain_model_protection.fe_login\')}'}" /></div>
+        </f:format.raw>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>
+  <f:translate key="tx_fpfileprotector_domain_model_protection.palette.be" />
+</h3>
+<div class="checkbox">
+  <label for="beLogin">
+    <f:form.checkbox value="1" property="beLogin" /> <f:translate key="tx_fpfileprotector_domain_model_protection.be_login" />
+  </label>
+</div>

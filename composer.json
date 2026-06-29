@@ -1,0 +1,44 @@
+{
+  "name": "fixpunkt/fp-fileprotector",
+  "type": "typo3-cms-extension",
+  "description": "File Protector",
+  "minimum-stability": "stable",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "fixpunkt für digitales GmbH",
+      "email": "office@fixpunkt.com",
+      "homepage": "https://fixpunkt.com",
+      "role": "Company"
+    },
+    {
+      "name": "Yannik Börgener",
+      "role": "Developer"
+    },
+    {
+      "name": "David Schneider",
+      "role": "Developer"
+    },
+    {
+      "name": "Mohamad Sulaiman",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "typo3/cms-core": "^13 || ^12",
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "typo3/coding-standards": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fixpunkt\\FpFileprotector\\": "Classes"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "fp_fileprotector"
+    }
+  }
+}
