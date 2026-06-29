@@ -2,7 +2,14 @@
   "name": "fixpunkt/fp-social",
   "type": "typo3-cms-extension",
   "description": "Social Wall",
+	"license": "GPL-2.0-or-later",
   "authors": [
+	  {
+		  "name": "fixpunkt für digitales GmbH",
+		  "email": "office@fixpunkt.com",
+		  "homepage": "https://fixpunkt.com",
+		  "role": "Company"
+	  },
     {
       "name": "Yannik Börgener",
       "role": "Developer"
