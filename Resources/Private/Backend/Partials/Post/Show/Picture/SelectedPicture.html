@@ -1,0 +1,15 @@
+<div class="carousel-caption" style="margin-bottom: 10px;">
+    <f:if condition="{post.selectedOrFirstPicture.uid} == {picture.uid}">
+        <f:then>
+            Derzeit ausgewähltes Vorschaubild
+        </f:then>
+        <f:else>
+            <f:form action="update" controller="Post" arguments="{postLink : postLink}" object="{post}" objectName="post">
+                <f:form.hidden property="selectedPicture" value="{picture.uid}" />
+                <f:form.button type="submit" class="btn btn-default" title="Dieses Bild als Vorschaubild auswählen">
+                    Dieses Bild als Vorschaubild auswählen
+                </f:form.button>
+            </f:form>
+        </f:else>
+    </f:if>
+</div>

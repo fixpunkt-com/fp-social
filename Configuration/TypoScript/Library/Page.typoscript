@@ -1,0 +1,9 @@
+page {
+    includeCSS {
+        fp_social = EXT:fp_social/Resources/Public/Css/fp_social.scss
+    }
+    includeJSFooter {
+        fp_social_plugin = EXT:fp_social/Resources/Public/JavaScript/Frontend/socialwall.jquery.js
+        fp_social = EXT:fp_social/Resources/Public/JavaScript/Frontend/frontend.js
+    }
+}

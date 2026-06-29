@@ -1,0 +1,14 @@
+<f:switch expression="{account.twMode}">
+    <f:case value="user_timeline">
+        Ausgabe von Account<br>
+        <small><i class="fa fa-at" aria-hidden="true"></i>{account.channel}</small>
+    </f:case>
+    <f:case value="user_timeline_posts">
+        Ausgabe von Account (ohne Replies)<br>
+        <small><i class="fa fa-at" aria-hidden="true"></i>{account.channel}</small>
+    </f:case>
+    <f:case value="hashtag">
+        Ausgabe von Beiträgen mit Hashtag<br>
+        <small><i class="fa fa-hashtag" aria-hidden="true"></i>{account.twHashtag}</small>
+    </f:case>
+</f:switch>

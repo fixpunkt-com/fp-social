@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2017-10-27T13:01:30Z" product-name="fp_social">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab">
+				<source>Social-Media Verwaltung</source>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tablabel">
+				<source>Verwalte verknüpfte Social-Media-Profile und ihre Posts.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

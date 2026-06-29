@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file target-language="fr" datatype="plaintext" original="messages" date="2015-06-18T15:36:05Z" product-name="fpsocial" source-language="en">
+		<header />
+		<body>
+			<!-- Access -->
+			<trans-unit id="tx_fpsocial_domain_model_access">
+				<source>Access data</source>
+				<target>Données d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.palette">
+				<source>Access data</source>
+				<target>Données d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.network">
+				<source>Network</source>
+				<target>Réseau</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fp_username">
+				<source>User name</source>
+				<target>Nom de l'utilisateur</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fp_mode">
+				<source>Authentication method</source>
+				<target>Méthode d'authentification</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fp_mode.password">
+				<source>Password</source>
+				<target>Mot de passe</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fp_mode.access_token">
+				<source>Access token</source>
+				<target>Jeton d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fp_password">
+				<source>Password</source>
+				<target>Mot de passe</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fp_access_token">
+				<source>Access token</source>
+				<target>Jeton d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fb_app_id">
+				<source>App Id</source>
+				<target>App Id</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fb_app_secret">
+				<source>App Secret</source>
+				<target>App Secret</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.fb_access_token">
+				<source>Access Tokens</source>
+				<target>Jetons d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.wp_url">
+				<source>URL</source>
+				<target>URL</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.tw_consumer_key">
+				<source>API key</source>
+				<target>Clé API</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.tw_consumer_secret">
+				<source>API secret key</source>
+				<target>Clé secrète de l'API</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.tw_access_token">
+				<source>Access tokens</source>
+				<target>Jetons d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.tw_access_secret">
+				<source>Secret Access token</source>
+				<target>Secret Jeton d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.yt_api_key">
+				<source>Api Key</source>
+				<target>Clé Api</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.in_old_access_token">
+				<source>Access Tokens</source>
+				<target>Jetons d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.in_access_token">
+				<source>User Access Token (this user must manage the Instagram page)</source>
+				<target>Jeton d'accès utilisateur (cet utilisateur doit gérer la page Instagram)</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_access.in_business_id">
+				<source>Business Id</source>
+				<target>Numéro d'identification de l'entreprise</target>
+			</trans-unit>
+
+            <!-- Account -->
+			<trans-unit id="tx_fpsocial_domain_model_account">
+				<source>Account</source>
+				<target>Compte</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.palettes.network">
+				<source>Network and access data</source>
+				<target>Données relatives au réseau et à l'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.palettes.settings">
+				<source>Setting</source>
+				<target>Paramètres</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.palettes.synchronization">
+				<source>Synchronization</source>
+				<target>Synchronisation</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.access">
+				<source>Access data</source>
+				<target>Données d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.network">
+				<source>Network</source>
+				<target>Réseau</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.label">
+				<source>Label</source>
+				<target>Étiquette</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.channel">
+				<source>The Channel</source>
+				<target>La chaîne</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.posts">
+				<source>Posts</source>
+				<target>Postes</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.fb_app_id">
+				<source>App Id</source>
+				<target>App Id</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.fb_app_secret">
+				<source>App Secret</source>
+				<target>App Secret</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.fb_access_token">
+				<source>Access Tokens</source>
+				<target>Jetons d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.wp_url">
+				<source>URL</source>
+				<target>URL</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.wp_mode">
+				<source>Mode</source>
+				<target>Mode</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.wp_mode.posts">
+				<source>All posts</source>
+				<target>Tous les postes</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.wp_mode.tag">
+				<source>Limited to one day</source>
+				<target>Limité à un jour</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.wp_mode.author">
+				<source>Restricted to author</source>
+				<target>Réservé à l'auteur</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.wp_tag">
+				<source>Tag (Slug)</source>
+				<target>Tag (limace)</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.wp_author">
+				<source>Username of the author</source>
+				<target>Nom d'utilisateur de l'auteur</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_mode">
+				<source>Mode</source>
+				<target>Mode</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_mode.user_profile">
+				<source>Print user profile</source>
+				<target>Imprimer le profil de l'utilisateur</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_mode.user_profile_posts">
+				<source>Print user profile (without replies)</source>
+				<target>Imprimer le profil de l'utilisateur (sans les réponses)</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_mode.hashtag">
+				<source>Outputting posts with hashtag</source>
+				<target>Sortie des messages avec hashtag</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_hashtag">
+				<source>Hashtag</source>
+				<target>Hashtag</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_consumer_key">
+				<source>API key</source>
+				<target>Clé API</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_consumer_secret">
+				<source>API secret key</source>
+				<target>Clé secrète de l'API</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_access_token">
+				<source>Access tokens</source>
+				<target>Jetons d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.tw_access_secret">
+				<source>Secret Access token</source>
+				<target>Secret Jeton d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.yt_api_key">
+				<source>Api Key</source>
+				<target>Clé Api</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_old_access_token">
+				<source>Access Tokens</source>
+				<target>Jetons d'accès</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_mode">
+				<source>Mode</source>
+				<target>Mode</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_mode.profile">
+				<source>Outputting posts from a page</source>
+				<target>Publication d'articles à partir d'une page</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_mode.hashtag">
+				<source>Outputting posts with hashtag</source>
+				<target>Sortie des messages avec hashtag</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_access_token">
+				<source>User Access Token (this user must manage the Instagram page)</source>
+				<target>Jeton d'accès utilisateur (cet utilisateur doit gérer la page Instagram)</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_business_id">
+				<source>Business Id</source>
+				<target>Numéro d'identification de l'entreprise</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_hashtag">
+				<source>Hashtag</source>
+				<target>Hashtag</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_hashtag_mode">
+				<source>Hahstag Mode</source>
+				<target>Mode Hahstag</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_hashtag_mode.recent_media">
+				<source>Recent Posts</source>
+				<target>Messages récents</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.in_hashtag_mode.top_media">
+				<source>Top Posts</source>
+				<target>Top Posts</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.li_mode">
+				<source>Mode</source>
+				<target>Mode</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.li_mode.shares">
+				<source>Shares</source>
+				<target>Actions</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.li_mode.ugc_posts">
+				<source>UGC Posts (incl. Shares)</source>
+				<target>Postes UGC (y compris Actions)</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.synchronize">
+				<source>Automatically synchronize this account</source>
+				<target>Synchroniser automatiquement ce compte</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.approve">
+				<source>Read-in posts will be activated immediately</source>
+				<target>Les postes de lecture seront activés immédiatement</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.last_synchronization">
+				<source>Date of the last synchronization</source>
+				<target>Date de la dernière synchronisation</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.last_successful_synchronization">
+				<source>Date of the last successful synchronization</source>
+				<target>Date de la dernière synchronisation réussie</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.synchronization_error">
+				<source>Error message during synchronization</source>
+				<target>Message d'erreur pendant la synchronisation</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.synchronization_interval">
+				<source>Synchronization Interval</source>
+				<target>Intervalle de synchronisation</target>
+			</trans-unit>
+
+		    <!-- Post -->
+			<trans-unit id="tx_fpsocial_domain_model_post">
+				<source>Post</source>
+				<target>Poste</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.palettes.post_data">
+				<source>General data</source>
+				<target>Données générales</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.palettes.more">
+				<source>Further media and links</source>
+				<target>Autres médias et liens</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.palettes.pictures">
+				<source>Display images</source>
+				<target>Afficher les images</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.palettes.visible">
+				<source>Display options</source>
+				<target>Options d'affichage</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.account">
+				<source>Account</source>
+				<target>Compte</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.accounts">
+				<source>Account</source>
+				<target>Compte</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.id">
+				<source>Post Id</source>
+				<target>Poste Id</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.network">
+				<source>Network</source>
+				<target>Réseau</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.url">
+				<source>Direct link</source>
+				<target>Lien direct</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.updated_time">
+				<source>Last Updated</source>
+				<target>Dernière mise à jour</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.headline">
+				<source>Heading</source>
+				<target>Rubrique</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.message">
+				<source>Message</source>
+				<target>Message</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.picture">
+				<source>Image</source>
+				<target>Image</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.pictures">
+				<source>Display images</source>
+				<target>Afficher les images</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.selected_picture">
+				<source>Preview image</source>
+				<target>Image de prévisualisation</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.link">
+				<source>Link</source>
+				<target>Lien</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.hidden">
+				<source>Hide in the frontend</source>
+				<target>Cacher dans le frontend</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.hidden.option">
+				<source>Hide this post in the frontend</source>
+				<target>Cacher ce message dans le frontend</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.origin_deleted">
+				<source>Deleted from the network?</source>
+				<target>Supprimée du réseau ?</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.origin_deleted.option">
+				<source>This post has been deleted from the network</source>
+				<target>Ce message a été supprimé du réseau</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.hashtags">
+				<source>Hashtags</source>
+				<target>Hashtags</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_post.mentions">
+				<source>Mention</source>
+				<target>Mention</target>
+			</trans-unit>
+
+			<!-- Picture -->
+			<trans-unit id="tx_fpsocial_domain_model_picture">
+				<source>Image</source>
+				<target>Image</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_picture.post">
+				<source>Post</source>
+				<target>Poste</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_picture.uri">
+				<source>Adresse</source>
+				<target>Adresse</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_picture.uri_identifier">
+				<source>Identification Address</source>
+				<target>Adresse d'identification</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_picture.filereference">
+				<source>Image</source>
+				<target>Image</target>
+			</trans-unit>
+
+			<!-- Post Link -->
+			<trans-unit id="tx_fpsocial_domain_model_postlink">
+				<source>Post Link</source>
+				<target>Lien de poste</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_postlink.account">
+				<source>Account</source>
+				<target>Compte</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_postlink.post">
+				<source>Post</source>
+				<target>Poste</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_postlink.hidden">
+				<source>Hide in the frontend</source>
+				<target>Cacher dans le frontend</target>
+			</trans-unit>
+
+			<!-- Mention -->
+			<trans-unit id="tx_fpsocial_domain_model_mention">
+				<source>Mention</source>
+				<target>Mention</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_mention.post">
+				<source>Post</source>
+				<target>Poste</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_mention.display_name">
+				<source>Display name</source>
+				<target>Nom d'affichage</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_mention.system_name">
+				<source>System Name</source>
+				<target>Nom du système</target>
+			</trans-unit>
+
+			<!-- Hashtag -->
+			<trans-unit id="tx_fpsocial_domain_model_hashtag">
+				<source>Hashtag</source>
+				<target>Hashtag</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_hashtag.post">
+				<source>Post</source>
+				<target>Poste</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_hashtag.hashtag">
+				<source>Hashtag</source>
+				<target>Hashtag</target>
+			</trans-unit>
+
+			<!-- Template -->
+			<trans-unit id="template.post.readMore">
+				<source>Read more...</source>
+				<target>Lire la suite...</target>
+			</trans-unit>
+			<trans-unit id="template.wall.load">
+				<source>Show more posts</source>
+				<target>Charger plus de posts</target>
+			</trans-unit>
+			<trans-unit id="template.wall.loading">
+				<source>Posts are loading</source>
+				<target>Chargement des posts</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

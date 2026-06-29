@@ -3,16 +3,50 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
-    public: true
+    public: false
 
-  Fixpunkt\FpFileprotector\:
+  Fixpunkt\FpSocial\:
     resource: '../Classes/*'
-    exclude:
-      - '../Classes/Domain/Model/*'
-      - '../Classes/Resource/*'
-      - '../Classes/Utility/*'
+    exclude: '../Classes/Domain/Model/*'
 
-  Fixpunkt\FpFileprotector\EventListener\ModifyIconForResourcePropertiesListener:
+  # console commands
+
+  Fixpunkt\FpSocial\Command\Synchronize:
+    public: true
+    tags:
+      - name: 'console.command'
+        command: 'fp_social:synchronize'
+    arguments:
+      $name: string
+
+  Fixpunkt\FpSocial\Command\DownloadImages:
+    tags:
+      - name: 'console.command'
+        command: 'fp_social:download'
+  Fixpunkt\FpSocial\Command\Remove:
+    tags:
+      - name: 'console.command'
+        command: 'fp_social:remove'
+
+  # event listener
+  Fixpunkt\FpSocial\EventListener\AccountUpdatedListener:
     tags:
       - name: event.listener
-        identifier: 'fpfileprotector-resource-icon'
+        identifier: 'fpsocial-cache-account'
+
+  Fixpunkt\FpSocial\EventListener\PostUpdatedListener:
+    tags:
+      - name: event.listener
+        identifier: 'fpsocial-cache-post'
+
+  Fixpunkt\FpSocial\EventListener\RecordCollectionEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'fpsocial-recordcollection-postlinks'
+
+  Fixpunkt\FpSocial\Property\TypeConverters\HiddenObjectConverter:
+    tags:
+      - name: fpsocial.hidden_object_converter
+        priority: 100
+        target: TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject
+        sources: integer, string, array

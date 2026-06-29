@@ -1,0 +1,13 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+<f:if condition="{size}">
+    <f:then>
+        <fp:image image="{picture}">
+            <f:image image="{image}" width="{size}c" height="{size}c" style="height: {size}px; width: {size}px;" />
+        </fp:image>
+    </f:then>
+    <f:else>
+        <fp:image image="{picture}">
+            <f:image image="{image}" maxWidth="1800" maxHeight="700" />
+        </fp:image>
+    </f:else>
+</f:if>

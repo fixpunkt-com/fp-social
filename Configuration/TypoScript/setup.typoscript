@@ -1,16 +1,48 @@
-module.tx_fpfileprotector {
+plugin.tx_fpsocial {
 	view {
 		templateRootPaths {
-			0 = {$module.tx_fpfileprotector.view.templateRootPath}
+			0 = EXT:fp_social/Resources/Private/Frontend/Templates/
+			1 = {$plugin.tx_fpsocial.view.templateRootPath}
 		}
 		partialRootPaths {
-			0 = {$module.tx_fpfileprotector.view.partialRootPath}
+			0 = EXT:fp_social/Resources/Private/Frontend/Partials/
+			1 = {$plugin.tx_fpsocial.view.partialRootPath}
 		}
 		layoutRootPaths {
-			0 = {$module.tx_fpfileprotector.view.layoutRootPath}
+			0 = EXT:fp_social/Resources/Private/Frontend/Layouts/
+			1 = {$plugin.tx_fpsocial.view.layoutRootPath}
 		}
 	}
 	persistence {
-		storagePid = {$module.tx_fpfileprotector.persistence.storagePid}
+		storagePid = {$plugin.tx_fpsocial.persistence.storagePid}
+	}
+	settings {
+		ajaxPage = {$plugin.tx_fpsocial.settings.ajaxPage}
 	}
 }
+
+# Module configuration
+module.tx_fpsocial {
+	view {
+		templateRootPaths {
+			1 = EXT:fp_social/Resources/Private/Backend/Templates/
+			2 = {$module.tx_fpsocial.view.templateRootPath}
+		}
+		partialRootPaths {
+			1 = EXT:fp_social/Resources/Private/Backend/Partials/
+			2 = {$module.tx_fpsocial.view.partialRootPath}
+		}
+		layoutRootPaths {
+			1 = EXT:fp_social/Resources/Private/Backend/Layouts/
+			2 = {$module.tx_fpsocial.view.layoutRootPath}
+		}
+	}
+	persistence {
+		storagePid = {$module.tx_fpsocial.persistence.storagePid}
+	}
+	features {
+		ignoreAllEnableFieldsInBe = 1
+	}
+}
+
+@import 'EXT:fp_social/Configuration/TypoScript/Library/*'

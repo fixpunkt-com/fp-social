@@ -1,0 +1,45 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+<f:if condition="{post.pictures -> f:count()}">
+    <div style="white-space: nowrap;">
+        <f:for each="{post.pictures}" as="picture" iteration="iter">
+            <f:if condition="{iter.index}%4 == 0 && !{iter.isFirst}"></div><div></f:if>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#post-picture-{post.uid}" data-interval="false" data-index="{iter.index}" style="text-decoration: none;">
+                <div style="display: inline-block; margin-bottom: 5px; border: 1px solid #ddd;">
+                    <f:if condition="{post.selectedOrFirstPicture.uid} == {picture.uid}">
+                        <f:then>
+                            <f:render partial="Post/Show/Picture/Render" arguments="{size: 80, picture : picture}" />
+                        </f:then>
+                        <f:else>
+                            <div style="opacity: 0.6;">
+                                <f:render partial="Post/Show/Picture/Render" arguments="{size: 80, picture : picture}" />
+                            </div>
+                        </f:else>
+                    </f:if>
+                </div>
+            </a>
+        </f:for>
+    </div>
+
+    <f:if condition="{postLink}">
+        <div class="modal fade" id="post-picture-{post.uid}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <f:if condition="{post.pictures -> f:count()} > 1">
+                            <f:then>
+                                <f:render partial="Post/Show/Picture/Carousel" arguments="{post : post, postLink : postLink}" />
+                            </f:then>
+                            <f:else>
+                                <f:render partial="Post/Show/Picture/Render" arguments="{picture : post.pictures.0}" />
+                            </f:else>
+                        </f:if>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-default" data-bs-dismiss="modal">Schließen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:if>
+</f:if>

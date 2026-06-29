@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+	<f:section name="main">
+		<div class="wall" data-columns="{columns}" data-cuid="{data.uid}" data-load-newer="{data.tx_fpsocial_wall_loadnewer_enable}" data-load-newer-replace="{data.tx_fpsocial_wall_replace}" data-load-newer-url="{f:uri.action(action : 'ajaxLoadNewer', pluginName : 'Ajax', pageType : settings.ajaxPage)}">
+			<div class="row row-cols-{columns} g-2 posts">
+				<f:for each="{records}" as="record">
+					<f:render partial="Post/Show" arguments="{post : record.record, account : record.record.account, source : record.source, data : data}" />
+				</f:for>
+			</div>
+
+			<f:if condition="{data.tx_fpsocial_wall_loadbefore_enable}">
+				<div class="text-center">
+					<f:render partial="Wall/LoadBeforeButton" arguments="{_all}" />
+				</div>
+			</f:if>
+		</div>
+	</f:section>
+</html>

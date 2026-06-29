@@ -1,0 +1,144 @@
+.tx-fp-social .post {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+
+  .text {
+    padding: 15px;
+    flex-grow: 1;
+
+    .message p:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+  .image img {
+    width: 100%;
+    height: auto;
+  }
+  .socialhint {
+    color: #FFF;
+    font-size: 0.8em;
+    a, a:hover {
+      color: #FFF;
+    }
+  }
+
+
+  // Soziale Netzwerke
+  $bg-opacity: 0.1;
+  $box-shadow-opacity: 0.13;
+  $box-shadow-size: 1px 1px 3px 0px;
+  $social-hint-opacity: 1;
+  &:not([class*="Fixpunkt_"]) {
+    $r: 200;
+    $g: 200;
+    $b: 200;
+    background: rgba($r, $g, $b, $bg-opacity);
+    box-shadow: $box-shadow-size rgba($r, $g, $b, $box-shadow-opacity);
+    .socialhint {
+      background: rgba($r, $g, $b, $social-hint-opacity);
+    }
+  }
+
+  &.Fixpunkt_Facebook {
+    $r: 66;
+    $g: 103;
+    $b: 178;
+    background: rgba($r, $g, $b, $bg-opacity);
+    box-shadow: $box-shadow-size rgba($r, $g, $b, $box-shadow-opacity);
+    .socialhint {
+      background: rgba($r, $g, $b, $social-hint-opacity);
+    }
+  }
+  &.Fixpunkt_Wordpress {
+    $r: 133;
+    $g: 22;
+    $b: 81;
+    background: rgba($r, $g, $b, $bg-opacity);
+    box-shadow: $box-shadow-size rgba($r, $g, $b, $box-shadow-opacity);
+    .socialhint {
+      background: rgba($r, $g, $b, $social-hint-opacity);
+    }
+  }
+  &.Fixpunkt_Youtube {
+    $r: 255;
+    $g: 0;
+    $b: 0;
+    background: rgba($r, $g, $b, $bg-opacity);
+    box-shadow: $box-shadow-size rgba($r, $g, $b, $box-shadow-opacity);
+    .socialhint {
+      background: rgba($r, $g, $b, $social-hint-opacity);
+    }
+  }
+  &.Fixpunkt_InstagramOld, &.Fixpunkt_Instagram {
+    $r: 131;
+    $g: 58;
+    $b: 180;
+    background: rgba($r, $g, $b, $bg-opacity);
+    box-shadow: $box-shadow-size rgba($r, $g, $b, $box-shadow-opacity);
+    .socialhint {
+      background: rgba($r, $g, $b, $social-hint-opacity);
+    }
+  }
+  &.Fixpunkt_LinkedIn {
+    $r: 0;
+    $g: 119;
+    $b: 181;
+    background: rgba($r, $g, $b, $bg-opacity);
+    box-shadow: $box-shadow-size rgba($r, $g, $b, $box-shadow-opacity);
+    .socialhint {
+      background: rgba($r, $g, $b, $social-hint-opacity);
+    }
+  }
+  &.Fixpunkt_Bluesky {
+    $r: 17;
+    $g: 133;
+    $b: 254;
+    background: rgba($r, $g, $b, $bg-opacity);
+    box-shadow: $box-shadow-size rgba($r, $g, $b, $box-shadow-opacity);
+    .socialhint {
+      background: rgba($r, $g, $b, $social-hint-opacity);
+    }
+  }
+
+  &.compact {
+    .image {
+      position: relative;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+
+      .overlay {
+        opacity: 0;
+        transition: opacity 0.3s;
+        background: rgba(0, 0, 0, 0.8);
+        color: #FFF;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: auto;
+        align-items: start;
+        z-index: 1;
+
+        .text {
+          font-size: 0.8em;
+          h4 {
+            font-size: 1rem;
+          }
+          a {
+            color: #FFF;
+          }
+        }
+      }
+    }
+
+    &:hover .overlay {
+      opacity: 1;
+    }
+  }
+}

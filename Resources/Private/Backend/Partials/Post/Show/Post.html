@@ -1,0 +1,87 @@
+{namespace core = TYPO3\CMS\Core\ViewHelpers}
+
+<tr class="{f:if(condition : '{postLink} && {postLink.hidden}', then : 'no-display')}">
+    <td>
+        <div>
+            <f:link.action controller="Account" action="show" arguments="{account : post.accounts.0.account}">
+                {post.accounts.0.account.description}
+            </f:link.action><br>
+            {post.id}<br>
+            <div class="small">
+                Interne Id: {post.uid}
+                <f:if condition="{postLink}">
+                    <br>Link-Id: {postLink.uid}
+                </f:if>
+            </div>
+        </div>
+    </td>
+    <td style="line-height: 1em;">
+        <div>
+            <f:format.date format="d.m.Y">{post.updatedTime}</f:format.date><br>
+            <small>
+                <f:format.date format="H:i">{post.updatedTime}</f:format.date> Uhr
+            </small>
+        </div>
+    </td>
+    <td>
+        <f:if condition="{postLink} && {postLink.hidden}">
+            <f:if condition="{post.originDeleted}">
+                <f:then>
+                    <div class="text-danger small"><strong><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Dieser Post ist ausgeblendet und wird im Frontend nicht angezeigt, weil er nicht mehr im Netzwerk verfügbar ist!</strong></div>
+                </f:then>
+                <f:else>
+                    <div class="text-warning small"><strong><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Dieser Post ist ausgeblendet und wird im Frontend nicht angezeigt!</strong></div>
+                </f:else>
+            </f:if>
+        </f:if>
+        <div>
+            <f:render partial="Networks/{post.partialFolder}/Message" arguments="{post : post}" />
+        </div>
+
+        <f:if condition="{post.hashtags -> f:count()}">
+            <div style="display: flex; margin-top: 10px;">
+                <div>
+                    <i class="fa fa-fw fa-2x fa-hashtag"></i>
+                </div>
+                <div style="flex-grow:1">
+                    <f:for each="{post.hashtags}" as="hashtag">
+                        <span class="label label-default">#{hashtag.hashtag}</span>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+        <f:if condition="{post.mentions -> f:count()}">
+            <div style="display: flex; margin-top: 10px;">
+                <div>
+                    <i class="fa fa-fw fa-2x fa-at"></i>
+                </div>
+                <div style="flex-grow:1">
+                    <f:for each="{post.mentions}" as="mention">
+                        <span class="label label-default">@{mention.displayName}</span>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+    </td>
+    <td>
+        <f:render partial="Post/Show/Picture" arguments="{post : post, postLink : postLink}" />
+    </td>
+    <td style="text-align: right; white-space: nowrap;">
+        <f:if condition="!{post.originDeleted}">
+            <f:link.external uri="{post.url}" class="btn btn-default" target="_blank" title="Post öffnen">
+                <core:icon identifier="actions-eye-link" size="small" />
+            </f:link.external>
+        </f:if>
+
+        <f:if condition="{postLink}">
+            <f:if condition="!{post.originDeleted}">
+                <div style="display: inline-block">
+                    <f:render partial="Post/Show/Hidden" arguments="{postLink : postLink}" />
+                </div>
+            </f:if>
+            <f:link.action controller="Synchronization" action="post" arguments="{post : post, account : postLink.account, page : settings.paginationSettings.page}" class="btn btn-default" title="Post neu synchronisieren">
+                <core:icon identifier="actions-download" size="small" />
+            </f:link.action>
+        </f:if>
+    </td>
+</tr>

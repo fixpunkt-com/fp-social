@@ -1,0 +1,46 @@
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1>
+        Automatische Synchronisation bearbeiten
+    </h1>
+
+    <f:flashMessages />
+
+    <f:if condition="{sortedAccounts -> f:count()}">
+        <f:then>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Account</th>
+                    <th>Modus</th>
+                    <th>Automatische Synchronisation</th>
+                    <th>Automatische Freischaltung</th>
+                    <th style="width: 10px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <f:for each="{sortedAccounts}" as="accounts" key="network">
+                    <f:if condition="{accounts.0}">
+                        <tr>
+                            <th colspan="6" class="small" style="background: #ededed;">
+                                <div class="clearfix">
+                                    <div class="pull-left">{accounts.0.description}</div>
+                                    <div class="pull-right text-muted">{network}</div>
+                                </div>
+
+                            </th>
+                        </tr>
+                        <f:for each="{accounts}" as="account">
+                            <f:render partial="Synchronization/List/Account" arguments="{account : account}" />
+                        </f:for>
+                    </f:if>
+                </f:for>
+                </tbody>
+            </table>
+        </f:then>
+        <f:else>
+            <p>Noch keine Accounts angelegt.</p>
+        </f:else>
+    </f:if>
+</f:section>

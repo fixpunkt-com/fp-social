@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2015-06-18T15:36:05Z" product-name="fpsocial">
+        <header/>
+        <body>
+
+            <trans-unit id="mainsheet.title">
+                <source>Allgemeine Einstellungen</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.account">
+                <source>Social Media Account</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.action">
+                <source>Ausgabemodus</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.action.list">
+                <source>Liste von Posts ausgeben</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.action.show">
+                <source>Einzelnen Post ausgeben</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.action.wall">
+                <source>Social Wall</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.limit">
+                <source>Anzahl der zu zeigenden Posts</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.offset">
+                <source>Offset (0 = ab erstem | 1 = ab zweitem ..)</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.post">
+                <source>Post</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.accounts">
+                <source>Social Media Accounts</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.records">
+                <source>Feste Records</source>
+            </trans-unit>
+            <trans-unit id="mainsheet.hashtags">
+                <source>Ausgabe beschränken auf folgende Hashtags...</source>
+            </trans-unit>
+
+            <trans-unit id="sheetPost">
+                <source>Darstellung Posts</source>
+            </trans-unit>
+            <trans-unit id="sheetPost.crop">
+                <source>Beschreibung kürzen</source>
+            </trans-unit>
+            <trans-unit id="sheetPost.characters">
+                <source>Beschreibung kürzen auf...</source>
+            </trans-unit>
+            <trans-unit id="sheetPost.compact">
+                <source>Kompakte Darstellung</source>
+            </trans-unit>
+            <trans-unit id="sheetPost.picture">
+                <source>Bild anzeigen</source>
+            </trans-unit>
+            <trans-unit id="sheetPost.pictureCrop">
+                <source>Bild im Format 1:1 anzeigen</source>
+            </trans-unit>
+
+            <trans-unit id="sheetWall">
+                <source>Einstellungen Social Wall</source>
+            </trans-unit>
+            <trans-unit id="sheetWall.columns">
+                <source>Spalten</source>
+            </trans-unit>
+            <trans-unit id="sheetWall.rows">
+                <source>Zeilen</source>
+            </trans-unit>
+            <trans-unit id="sheetWall.loadNewer.enable">
+                <source>Automatisch neue Records nachladen</source>
+            </trans-unit>
+            <trans-unit id="sheetWall.replace">
+                <source>Ältere Records durch neuere ersetzen</source>
+            </trans-unit>
+            <trans-unit id="sheetWall.replace.description">
+                <source>Ist diese Option aktiviert, wird der älteste Record entfernt, wenn ein neuer Record automatisch geladen wird. Dadurch bleibt das Content Element immer ungefähr gleich groß.</source>
+            </trans-unit>
+            <trans-unit id="sheetWall.loadBefore.enable">
+                <source>Manuelles Nachladen von älteren Records erlauben</source>
+            </trans-unit>
+            <trans-unit id="sheetWall.loadBefore.trans-unit">
+                <source>Beschriftung Nachladen Button</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

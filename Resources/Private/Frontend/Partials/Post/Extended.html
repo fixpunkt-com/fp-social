@@ -1,0 +1,9 @@
+<div class="post extended {account.partialFolder} {f:if(condition : data.tx_fpsocial_post_crop, then : 'cropped')}" data-identifier="{post.identifier}" data-timestamp="{f:format.date(format : 'U', date : post.updatedTime)}" data-source="{source}">
+    <f:render partial="Post/Parts/Text" arguments="{_all}" />
+    <f:if condition="{post.pictures -> f:count()} && ({data.tx_fpsocial_post_picture} == '' || {data.tx_fpsocial_post_picture})">
+        <div class="image">
+            <f:render partial="Post/Parts/Image" arguments="{_all}" />
+        </div>
+    </f:if>
+    <f:render partial="Post/Parts/Bottom" arguments="{_all}" />
+</div>

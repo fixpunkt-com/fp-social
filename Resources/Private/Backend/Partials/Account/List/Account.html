@@ -1,0 +1,55 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+{namespace core = TYPO3\CMS\Core\ViewHelpers}
+
+<tr>
+    <td style="white-space: nowrap">
+        <f:if condition="{account.synchronize}">
+            <f:then>
+                <span class="text-success" title="Dieser Account wird automatisch synchronisiert.">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </span>
+            </f:then>
+            <f:else>
+                <span class="text-warning" title="Dieser Account ist von der automatischen Synchronisation ausgenommen.">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </span>
+            </f:else>
+        </f:if>
+        <f:if condition="{account.approve}">
+            <f:then>
+                <span class="text-success" title="Synchronisierte Posts werden automatisch freigeschaltet.">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+            </f:then>
+            <f:else>
+                <span class="text-danger" title="Synchronisierte Posts müssen händisch freigeschaltet werden.">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+            </f:else>
+        </f:if>
+    </td>
+    <td>{account.description}</td>
+    <td style="line-height: 1.2em;">
+        <f:render partial="Networks/{account.partialFolder}/Mode" arguments="{account : account}" />
+    </td>
+    <td>
+        {account.amountOfPosts}
+    </td>
+    <td>
+        <f:render partial="Account/List/LastSynchronization" arguments="{account : account}" />
+    </td>
+    <td>
+        <f:render partial="Account/List/NextSynchronization" arguments="{account : account}" />
+    </td>
+    <td style="text-align: right; white-space: nowrap;">
+        <f:link.action action="account" controller="Synchronization" arguments="{account : account}" class="btn btn-default" title="Letzte Posts synchronisieren">
+            <core:icon identifier="actions-download" size="small" />
+        </f:link.action>
+        <f:link.action action="account" controller="Synchronization" arguments="{account : account, deep : 1}" class="btn btn-default" title="Gesamten Account synchronisieren">
+            <core:icon identifier="actions-database-export" size="small" />
+        </f:link.action>
+        <f:link.action action="show" arguments="{account : account}" class="btn btn-default" title="Beiträge anzeigen">
+            <core:icon identifier="actions-eye" size="small" />
+        </f:link.action>
+    </td>
+</tr>

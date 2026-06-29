@@ -1,0 +1,8 @@
+Ausgabe von Blog<br>
+<small>{account.access.wpUrl}</small>
+<f:if condition="{account.wpMode} == 'tag'">
+    <br><small><i class="fa fa-tag" aria-hidden="true"></i> Tag: {account.wpTag}</small>
+</f:if>
+<f:if condition="{account.wpMode} == 'author'">
+    <br><small><i class="fa fa-user" aria-hidden="true"></i> Autor: {account.wpAuthor}</small>
+</f:if>

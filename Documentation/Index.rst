@@ -1,16 +1,14 @@
-..  include:: /Includes.rst.txt
-
 ..  _start:
 
-================
-fp-fileprotector
-================
+=========
+fp_social
+=========
 
 :Extension key:
-    fp_fileprotector
+    fp_social
 
 :Package name:
-    fixpunkt/fp-fileprotector
+    fixpunkt/fp-social
 
 :Version:
     |release|
@@ -19,60 +17,47 @@ fp-fileprotector
     en
 
 :Author:
-    fixpunkt für digitales GmbH
+    fixpunkt werbeagentur
 
 :License:
     This document is published under the
     `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
     license.
 
-:Rendered:
-    |today|
+----
+
+Easily manage and output media from social media in TYPO3.
+
+With *fp_social* you can easily synchronize and output posts from many social
+media networks with your TYPO3 instance, without much prior knowledge.
+
+*   **All-rounder:** Import posts from Facebook, Instagram, Youtube and
+    Wordpress.
+*   **Easy to manage:** Manage your accounts and posts without programming
+    knowledge through an easy-to-understand interface directly in the
+    TYPO3 backend.
+*   **Always up to date:** The extension takes care of automatically updating
+    your accounts. You don't have to worry about anything.
+*   **No setup required:** Use our Social Media Connector for Facebook and
+    Instagram and import your posts without your own API access. [#f1]_
+*   **Extensible:** Developers can also output their own local records (for
+    example news or events) in the Social Wall. See :ref:`local-records-in-wall`.
+
+..  [#f1] To use our Social Media Connector you need an account on our homepage.
+    Costs may apply for this service.
 
 ----
 
-The extension **fp-fileprotector** allows you to restrict access to file
-storages in TYPO3 and define granular access rules for individual files
-and folders.
-
-----
-
-..  card-grid::
-    :columns-left: 4
-    :columns-center: 4
-    :columns-right: 4
-    :gap: 6
-    :class: with-shadow
-
-    ..  card:: Introduction
-        :link: introduction
-        :link-type: ref
-
-        What is fp-fileprotector and how does it work?
-
-    ..  card:: Configuration
-        :link: configuration
-        :link-type: ref
-
-        How to protect a file storage.
-
-    ..  card:: Usage
-        :link: usage
-        :link-type: ref
-
-        How to define access rules for folders.
-
-    ..  card:: Troubleshooting
-        :link: known-problems
-        :link-type: ref
-
-        Common issues and solutions.
+**Table of contents:**
 
 ..  toctree::
-    :hidden:
+    :maxdepth: 2
+    :titlesonly:
 
     Introduction/Index
-    Usage/Index
-    TroubleShooting/Index
-    FuturePlans/Index
-    Sitemap
+    Installation/Index
+    BackendManagement/Index
+    FrontendOutput/Index
+    ForIntegrators/Index
+    ForDevelopers/Index
+    Changelog/Index

@@ -1,0 +1,11 @@
+<f:be.pageRenderer includeJavaScriptModules="{
+	0 : '@fixpunkt/fp-social/Basic'
+	1 : '@fixpunkt/fp-social/deepsynchronization'
+}" />
+
+<div class="module {moduleClass}" data-module-id="{moduleId}" data-module-name="{moduleName}">
+	<div class="module-body t3js-module-body">
+		<f:render partial="Header" arguments="{_all}" />
+		<f:render section="content" />
+	</div>
+</div>

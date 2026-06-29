@@ -1,16 +1,32 @@
-module.tx_fpfileprotector {
+plugin.tx_fpsocial {
 	view {
-		# cat=plugin.tx_fpfileprotector/file; type=string; label=Path to template root (FE)
-		templateRootPath = EXT:fp_fileprotector/Resources/Private/Backend/Templates/
-		# cat=plugin.tx_fpfileprotector/file; type=string; label=Path to template partials (FE)
-		partialRootPath = EXT:fp_fileprotector/Resources/Private/Backend/Partials/
-		# cat=plugin.tx_fpfileprotector/file; type=string; label=Path to template layouts (FE)
-		layoutRootPath = EXT:fp_fileprotector/Resources/Private/Backend/Layouts/
+		# cat=plugin.tx_fpsocial/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:fp_social/Resources/Private/Frontend/Templates/
+		# cat=plugin.tx_fpsocial/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:fp_social/Resources/Private/Frontend/Partials/
+		# cat=plugin.tx_fpsocial/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:fp_social/Resources/Private/Frontend/Layouts/
 	}
 	persistence {
-		# cat=plugin.tx_fpfileprotector//a; type=string; label=Default storage PID
+		# cat=plugin.tx_fpsocial//a; type=string; label=Default storage PID
 		storagePid =
+	}
+	settings {
+		ajaxPage = 1729369341
 	}
 }
 
-
+module.tx_fpsocial {
+	view {
+		# cat=plugin.tx_fpsocial/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:fp_social/Resources/Private/Backend/Templates/
+		# cat=plugin.tx_fpsocial/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:fp_social/Resources/Private/Backend/Partials/
+		# cat=plugin.tx_fpsocial/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:fp_social/Resources/Private/Backend/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_fpsocial//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

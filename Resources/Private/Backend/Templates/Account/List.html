@@ -1,0 +1,49 @@
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1>Derzeit registrierte Accounts</h1>
+
+    <f:flashMessages />
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 15px;"></th>
+            <th>Netzwerk</th>
+            <th>Modus</th>
+            <th>Anzahl Posts</th>
+            <th>Letzte Synchronisation</th>
+            <th>Nächste Synchronisation</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <f:render partial="Account/List/Filter/Table" arguments="{query : query}" />
+
+            <f:if condition="{sortedAccounts -> f:count()}">
+                <f:then>
+                    <f:for each="{sortedAccounts}" as="accounts" key="network">
+                        <f:if condition="{accounts.0}">
+                            <tr>
+                                <th colspan="7" class="small" style="background: #ededed;">
+                                    <div class="clearfix">
+                                        <div class="pull-left">{accounts.0.description}</div>
+                                        <div class="pull-right text-muted">{network}</div>
+                                    </div>
+
+                                </th>
+                            </tr>
+                            <f:for each="{accounts}" as="account">
+                                <f:render partial="Account/List/Account" arguments="{account : account}" />
+                            </f:for>
+                        </f:if>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <f:render partial="Account/List/NoAccounts" />
+                </f:else>
+            </f:if>
+        </tbody>
+    </table>
+
+</f:section>

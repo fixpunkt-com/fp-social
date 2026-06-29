@@ -1,0 +1,37 @@
+<ol class="breadcrumb" style="background: #EEE;">
+    <f:if condition="{context.controller} == 'Account'">
+        <li {f:if(condition : '{context.action} == \'list\'', then : 'class="active"')}>
+        <f:link.action controller="Account" action="list">Accounts anzeigen</f:link.action>
+        </li>
+        <f:if condition="{context.action} == 'show'">
+            <li {f:if(condition : '{context.action} == \'show\'', then : 'class="active"')}>
+            <f:link.action controller="Account" action="show" arguments="{account : account}">Account anzeigen</f:link.action>
+            </li>
+        </f:if>
+    </f:if>
+
+    <f:if condition="{context.controller} == 'Post'">
+        <li {f:if(condition : '{context.action} == \'search\'', then : 'class="active"')}>
+        <f:link.action controller="Account" action="list">Posts durchsuchen</f:link.action>
+        </li>
+    </f:if>
+</ol>
+
+<style>
+    #breadcrumb ol {
+        list-style: none;
+        padding: 5px 20px;
+    }
+    #breadcrumb ol li {
+        display: inline-block;
+        padding: 0;
+    }
+    #breadcrumb ol li:not(.active)::after {
+        content : '/';
+        margin: 0 10px;
+    }
+</style>
+
+<f:section name="listelement">
+    <f:link.action action="{action}" controller="{controller}" class="selected"><i class="fa {icon}" aria-hidden="true"></i> {label}</f:link.action>
+</f:section>

@@ -1,0 +1,15 @@
+<f:form action="list">
+    <tr>
+        <td colspan="6">
+            <f:render partial="Account/List/Filter/Select" arguments="{query : query}" />
+            <f:if condition="{query}">
+                <div class="text-warning">
+                    Soziale Netzwerke werden derzeit gefiltet - <strong><f:link.action action="list" arguments="{query : 'none'}" class="text-warning">Alle Netzwerke anzeigen</f:link.action></strong>
+                </div>
+            </f:if>
+        </td>
+        <td style="text-align: right;">
+            <f:form.button type="submit" class="btn btn-default">Suche</f:form.button>
+        </td>
+    </tr>
+</f:form>

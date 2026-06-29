@@ -1,0 +1,22 @@
+
+<f:layout name="NoNavigation" />
+
+<f:section name="content">
+    <h1>Migration</h1>
+
+    <f:flashMessages />
+
+    <p>Bitte wähle aus, was getan werden soll:</p>
+    <f:form action="main">
+        <div class="d-flex">
+            <f:form.select name="migration" class="form-select flex-grow-1 me-1">
+                <f:for each="{migrations}" key="class" as="label">
+                    <option value="{class}">{label}</option>
+                </f:for>
+            </f:form.select>
+            <f:form.button type="submit" class="btn btn-default" style="white-space: nowrap;">
+                Migration durchführen
+            </f:form.button>
+        </div>
+    </f:form>
+</f:section>

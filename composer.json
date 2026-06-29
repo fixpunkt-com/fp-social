@@ -1,44 +1,38 @@
 {
-  "name": "fixpunkt/fp-fileprotector",
+  "name": "fixpunkt/fp-social",
   "type": "typo3-cms-extension",
-  "description": "File Protector",
-  "minimum-stability": "stable",
-  "license": "GPL-2.0-or-later",
+  "description": "Social Wall",
   "authors": [
     {
-      "name": "fixpunkt für digitales GmbH",
-      "email": "office@fixpunkt.com",
-      "homepage": "https://fixpunkt.com",
-      "role": "Company"
-    },
-    {
       "name": "Yannik Börgener",
-      "role": "Developer"
-    },
-    {
-      "name": "David Schneider",
-      "role": "Developer"
-    },
-    {
-      "name": "Mohamad Sulaiman",
       "role": "Developer"
     }
   ],
   "require": {
-    "typo3/cms-core": "^13 || ^12",
-    "php": "^8.2"
-  },
-  "require-dev": {
-    "typo3/coding-standards": "*"
+    "php": "^8.1",
+    "typo3/cms-core": "^12.4 || ^13.4",
+    "typo3/cms-backend": "^12.4 || ^13.4",
+    "typo3/cms-extbase": "^12.4 || ^13.4",
+    "typo3/cms-fluid": "^12.4 || ^13.4",
+    "typo3/cms-install": "^12.4 || ^13.4",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ext-pdo": "*",
+    "league/uri": "^7.0",
+    "league/uri-components": "^7.0",
+    "chefkoch/morphoji": "^1.1",
+    "linawolf/list-type-migration": "^1.0",
+    "fixpunkt/fp-base-utilities": "^2.3",
+    "fixpunkt/fp-social-bridge": "^1.2"
   },
   "autoload": {
     "psr-4": {
-      "Fixpunkt\\FpFileprotector\\": "Classes"
+      "Fixpunkt\\FpSocial\\": "Classes"
     }
   },
   "extra": {
     "typo3/cms": {
-      "extension-key": "fp_fileprotector"
+      "extension-key": "fp_social"
     }
   }
 }

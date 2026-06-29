@@ -1,0 +1,10 @@
+<div class="col">
+    <f:if condition="{data.tx_fpsocial_post_compact}">
+        <f:then>
+            <f:render partial="Post/Compact" arguments="{_all}" />
+        </f:then>
+        <f:else>
+            <f:render partial="Post/Extended" arguments="{_all}" />
+        </f:else>
+    </f:if>
+</div>

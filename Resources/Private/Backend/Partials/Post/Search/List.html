@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Post-Id</th>
+        <th>Datum</th>
+        <th>Text</th>
+        <th>Bilder</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <f:for each="{posts}" as="post">
+        <f:render partial="Post/Show/Post" arguments="{post : post}" />
+    </f:for>
+    </tbody>
+</table>

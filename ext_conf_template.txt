@@ -1,0 +1,2 @@
+# cat=basic; type=string; label=API-Url: Die URL der API-Anbindung
+apiUrl = https://social.fixpunkt.com/api/

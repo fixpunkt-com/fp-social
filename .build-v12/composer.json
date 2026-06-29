@@ -1,0 +1,39 @@
+{
+  "name": "fixpunkt/fp-social-cs-tools-v12",
+  "description": "Isolated tooling to static-analyse fp_social against TYPO3 12.4 (lowest supported). Mirror of .build/ but pinned to the v12 line.",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.packagist.com/fixpunkt-werbeagentu/"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Fixpunkt\\FpSocial\\": "../Classes/"
+    }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.12 || ^2.0",
+    "phpstan/extension-installer": "^1.4",
+    "saschaegerer/phpstan-typo3": "^1.10 || ^2.0",
+    "typo3/cms-core": "^12.4",
+    "typo3/cms-extbase": "^12.4",
+    "typo3/cms-fluid": "^12.4",
+    "typo3/cms-frontend": "^12.4",
+    "typo3/cms-backend": "^12.4",
+    "typo3/cms-install": "^12.4",
+    "fixpunkt/fp-social-bridge": "^1.2",
+    "fixpunkt/fp-base-utilities": "^2.3",
+    "league/uri": "^7.0",
+    "league/uri-components": "^7.0",
+    "chefkoch/morphoji": "^1.1",
+    "linawolf/list-type-migration": "^1.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true,
+      "phpstan/extension-installer": true
+    }
+  }
+}

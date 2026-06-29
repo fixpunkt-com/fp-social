@@ -1,0 +1,9 @@
+<f:link.action action="ajaxLoadOlder" pluginName="Ajax" pageType="{settings.ajaxPage}" class="btn btn-primary btn-lg mt-5" data-action="load-older">
+    <span class="active" style="display: none;"><i class="fas fa-fw fa-spinner fa-spin"></i> <f:translate key="template.wall.loading" /></span>
+    <span class="inactive">
+        <f:if condition="{data.tx_fpsocial_wall_loadbefore_label}">
+            <f:then>{data.tx_fpsocial_wall_loadbefore_label}</f:then>
+            <f:else><f:translate key="template.wall.load" /></f:else>
+        </f:if>
+    </span>
+</f:link.action>

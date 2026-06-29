@@ -1,0 +1,35 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+
+<f:if condition="{post.selectedOrFirstPicture}">
+    <f:if condition="{data.tx_fpsocial_post_picture_crop}">
+        <f:then>
+            <f:render section="image" arguments="{picture : post.selectedOrFirstPicture, width : '500c', height : '500c'}" />
+        </f:then>
+        <f:else>
+            <f:if condition="{post.selectedOrFirstPicture.filereference.originalResource.originalFile.metadata.width} < {post.selectedOrFirstPicture.filereference.originalResource.originalFile.metadata.height}">
+                <f:then>
+                    <f:comment>Portrait</f:comment>
+                    <f:render section="image" arguments="{picture : post.selectedOrFirstPicture, maxWidth : '500', maxHeight : '333c'}" />
+                </f:then>
+                <f:else>
+                    <f:comment>Landscape</f:comment>
+                    <f:render section="image" arguments="{picture : post.selectedOrFirstPicture, maxWidth : '1800c', maxHeight : '400'}" />
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+</f:if>
+
+<f:section name="image">
+    <fp:image image="{picture}">
+        <f:image
+                image="{image}"
+                alt="{image.alternativeText}"
+                width="{width}"
+                maxWidth="{maxWidth}"
+                height="{height}"
+                maxHeight="{maxHeight}"
+                crop="1"
+                class="img-fluid" />
+    </fp:image>
+</f:section>

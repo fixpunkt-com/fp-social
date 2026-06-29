@@ -1,0 +1,9 @@
+Ausgabe von Account
+<f:switch expression="{account.liMode}">
+    <f:case value="shares"> (nur Shares)</f:case>
+    <f:case value="ugc_posts"> (Shares und UGC Posts)</f:case>
+</f:switch>
+<br>
+<small>
+    @{account.label} ({account.channel})
+</small>

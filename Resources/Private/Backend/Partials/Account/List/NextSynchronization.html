@@ -1,0 +1,19 @@
+<f:if condition="{account.synchronizationInterval}">
+    <f:then>
+        <f:format.date format="d.m.Y H:i:s">{account.nextSynchronization}</f:format.date> Uhr<br>
+        alle <f:render section="interval" arguments="{interval : account.synchronizationInterval}" />
+    </f:then>
+    <f:else>Sofort</f:else>
+</f:if>
+
+<f:section name="interval">
+    <f:if condition="{interval.d}">
+        {interval.d} Tage
+    </f:if>
+    <f:if condition="{interval.h}">
+        {interval.h} Stunden
+    </f:if>
+    <f:if condition="{interval.i}">
+        {interval.i} Minuten
+    </f:if>
+</f:section>

@@ -1,0 +1,36 @@
+<f:if condition="{account.lastSynchronizationWasSuccessful}">
+    <f:then>
+        <f:render section="last_synchronization" arguments="{account : account}" />
+    </f:then>
+    <f:else>
+        <div class="text-danger">
+            <f:render section="failed_synchronization" arguments="{account : account}" />
+        </div>
+    </f:else>
+</f:if>
+
+<f:section name="last_synchronization">
+    <f:if condition="{account.lastSuccessfulSynchronization}">
+        <f:then>
+            <f:format.date date="{account.lastSuccessfulSynchronization}" format="d.m.Y" /> - <f:format.date date="{account.lastSuccessfulSynchronization}" format="H:i:s" /> Uhr
+        </f:then>
+        <f:else>
+            noch nie
+        </f:else>
+    </f:if>
+</f:section>
+
+<f:section name="failed_synchronization">
+    <span>
+        <f:format.date date="{account.lastSynchronization}" format="d.m.Y" /> - <f:format.date date="{account.lastSynchronization}" format="H:i:s" /> Uhr
+    </span>
+    <p>
+        <strong>Synchronisation nicht erfolgreich:</strong><br>
+        {account.synchronizationError}
+    </p>
+
+    <div class="small">
+        Letzte erfolgreiche Synchronisation:
+        <f:render section="last_synchronization" arguments="{account : account}" />
+    </div>
+</f:section>

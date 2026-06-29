@@ -1,0 +1,47 @@
+<div id="nav">
+    <div id="mainnav">
+        <nav>
+            <f:render partial="Navigation" arguments="{context : context}" />
+        </nav>
+    </div>
+    <f:if condition="{context.controller} == 'Synchronization'">
+        <nav id="subnav">
+            <f:render partial="Subnavigation" />
+        </nav>
+    </f:if>
+    <f:if condition="{context.controller} == 'Post' || {context.controller} == 'Account'">
+        <nav id="breadcrumb">
+            <f:render partial="Breadcrumb" arguments="{_all}" />
+        </nav>
+    </f:if>
+</div>
+
+<style>
+    #mainnav {
+        padding: 10px 20px;
+        font-size: 1.2em;
+        background: #fafafa;
+        border-bottom: 1px solid #cccccc;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #subnav {
+        padding: 5px 20px;
+        font-size: 1em;
+        background: #cccccc;
+    }
+    #nav nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    #nav nav ul li {
+        display: inline-block;
+        margin-left: 0;
+        margin-right: 20px;
+    }
+    #nav nav ul li a.selected {
+        font-weight: bold;
+    }
+</style>

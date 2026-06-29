@@ -1,0 +1,18 @@
+<f:form.select name="query" class="form-control" value="{query}">
+    <f:form.select.option value="none">Alle anzeigen</f:form.select.option>
+    <f:form.select.optgroup label="Facebook">
+        <f:form.select.option value="network=Fixpunkt\FpSocial\Domain\Model\Account\Facebook">Facebook: Alle anzeigen</f:form.select.option>
+    </f:form.select.optgroup>
+    <f:form.select.optgroup label="Instagram">
+        <f:form.select.option value="network=Fixpunkt\FpSocial\Domain\Model\Account\Instagram">Instagram: Alle anzeigen</f:form.select.option>
+    </f:form.select.optgroup>
+    <f:form.select.optgroup label="Wordpress">
+        <f:form.select.option value="network=Fixpunkt\FpSocial\Domain\Model\Account\Wordpress">Wordpress: Alle anzeigen</f:form.select.option>
+        <f:form.select.option value="network=Fixpunkt\FpSocial\Domain\Model\Account\Wordpress&wpMode=posts">Wordpress: Ausgabe von allen Posts</f:form.select.option>
+        <f:form.select.option value="network=Fixpunkt\FpSocial\Domain\Model\Account\Wordpress&wpMode=tag">Wordpress: Ausgabe von Posts eines Tags</f:form.select.option>
+        <f:form.select.option value="network=Fixpunkt\FpSocial\Domain\Model\Account\Wordpress&wpMode=author">Wordpress: Ausgabe von Posts eines*r Autor*in</f:form.select.option>
+    </f:form.select.optgroup>
+    <f:form.select.optgroup label="Youtube">
+        <f:form.select.option value="network=Fixpunkt\FpSocial\Domain\Model\Account\Youtube">Youtube: Alle anzeigen</f:form.select.option>
+    </f:form.select.optgroup>
+</f:form.select>

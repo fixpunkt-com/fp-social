@@ -1,0 +1,62 @@
+
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1>
+        Posts für <span class="text-info">{account.description}</span>
+    </h1>
+
+    <f:flashMessages />
+
+    <f:if condition="{posts -> f:count()}">
+        <f:then>
+            <f:render partial="PostLink/List" arguments="{account : account, posts : posts, page : page, pagination : pagination}" />
+        </f:then>
+        <f:else>
+            <p>Noch keine Posts eingelesen.</p>
+        </f:else>
+    </f:if>
+
+    <style>
+        .f3-widget-paginator {
+            list-style: none;
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .f3-widget-paginator li {
+            display: inline-block;
+        }
+        .f3-widget-paginator li a {
+            background: lightgrey;
+            padding: 5px 10px;
+        }
+        .f3-widget-paginator li.current {
+            background: grey;
+            color: #FFF;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        tr.no-display td > * {
+            opacity: 0.3;
+        }
+        tr.no-display .text-warning, tr.no-display .text-warning *, tr.no-display .text-danger, tr.no-display .text-danger * {
+            opacity: 1 !important;
+        }
+
+        .modal img {
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+        }
+
+        .carousel-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+</f:section>

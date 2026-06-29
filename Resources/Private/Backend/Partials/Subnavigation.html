@@ -1,0 +1,14 @@
+<ul>
+    <li>
+        <f:render section="listelement" arguments="{
+            action : 'list',
+            controller : 'Synchronization',
+            icon : 'fa-refresh',
+            label : 'Synchronisation'
+        }" />
+    </li>
+</ul>
+
+<f:section name="listelement">
+    <f:link.action action="{action}" controller="{controller}" class="selected"><i class="fa {icon}" aria-hidden="true"></i> {label}</f:link.action>
+</f:section>

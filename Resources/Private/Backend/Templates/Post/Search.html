@@ -1,0 +1,55 @@
+
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1>
+        Posts durchsuchen
+    </h1>
+
+    <f:flashMessages />
+    <div style="margin-bottom: 15px;">
+        <f:render partial="Post/Search/Filter" arguments="{accounts : accounts, search : search}" />
+    </div>
+
+
+    <f:if condition="{posts -> f:count()}">
+        <f:then>
+            <f:render partial="Pagination" arguments="{arguments : '{search : search}', pagination : pagination}" />
+            <f:render partial="Post/Search/List" arguments="{posts : posts}" />
+            <f:render partial="Pagination" arguments="{arguments : '{search : search}', pagination : pagination}" />
+        </f:then>
+        <f:else>
+            <f:if condition="!{search.expression} && !{search.accounts}">
+                <f:then>
+                    <p>Bitte Suchkriterien auswählen.</p>
+                </f:then>
+                <f:else>
+                    <p>Leider keine Ergebnisse gefunden.</p>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+
+    <style>
+        .f3-widget-paginator {
+            list-style: none;
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .f3-widget-paginator li {
+            display: inline-block;
+        }
+        .f3-widget-paginator li a {
+            background: lightgrey;
+            padding: 5px 10px;
+        }
+        .f3-widget-paginator li.current {
+            background: grey;
+            color: #FFF;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+    </style>
+
+</f:section>

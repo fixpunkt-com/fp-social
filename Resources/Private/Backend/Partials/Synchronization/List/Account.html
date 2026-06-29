@@ -1,0 +1,32 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+<tr>
+    <f:form action="update" object="{account}" objectName="account">
+        <td>{account.description}</td>
+        <td style="line-height: 1.2em;">
+            <f:render partial="Networks/{account.partialFolder}/Mode" arguments="{account : account}" />
+        </td>
+        <td style="white-space: nowrap;">
+            <f:form.select class="form-select" property="synchronizationInterval" value="{account.synchronizationIntervalString}">
+                <f:form.select.option value="-1">Nie (deaktiviert)</f:form.select.option>
+                <f:form.select.option value="">Immer</f:form.select.option>
+                <f:form.select.option value="PT15M">Alle 15 Minuten</f:form.select.option>
+                <f:form.select.option value="PT30M">Alle 30 Minuten</f:form.select.option>
+                <f:form.select.option value="PT1H">Alle 60 Minuten</f:form.select.option>
+                <f:form.select.option value="PT6H">Alle 6 Stunden</f:form.select.option>
+                <f:form.select.option value="PT12H">Alle 12 Stunden</f:form.select.option>
+                <f:form.select.option value="P1D">Alle 24 Stunden</f:form.select.option>
+            </f:form.select>
+        </td>
+        <td style="white-space: nowrap;">
+            <f:form.select class="form-select" property="approve">
+                <f:form.select.option value="0">Nein</f:form.select.option>
+                <f:form.select.option value="1">Ja</f:form.select.option>
+            </f:form.select>
+        </td>
+        <td class="text-right">
+            <f:form.button type="submit" class="btn btn-success btn-sm">
+                <core:icon identifier="actions-save" size="small" />
+            </f:form.button>
+        </td>
+    </f:form>
+</tr>

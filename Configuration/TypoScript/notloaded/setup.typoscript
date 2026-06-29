@@ -1,0 +1,8 @@
+# Module configuration
+module.tx_fpsocial {
+	view {
+		templateRootPaths {
+			0 = EXT:fp_social/Resources/Private/Backend/NotLoaded/
+		}
+	}
+}

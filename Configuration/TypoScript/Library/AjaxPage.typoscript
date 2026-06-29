@@ -1,0 +1,17 @@
+fpsocial_ajax = PAGE
+fpsocial_ajax {
+    typeNum = {$plugin.tx_fpsocial.settings.ajaxPage}
+
+    # set output to json
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders.10.header = Content-type:application/json
+    }
+
+    # add plugin
+    1 = EXTBASEPLUGIN
+    1 {
+        extensionName = FpSocial
+        pluginName = Ajax
+    }
+}

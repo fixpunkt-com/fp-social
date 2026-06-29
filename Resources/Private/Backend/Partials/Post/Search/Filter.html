@@ -1,0 +1,19 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+<f:form action="search">
+    <div class="form-group">
+        <label for="expression">Suchbegriff:</label>
+        <f:form.textfield id="expression" name="search[expression]" class="form-control" value="{search.expression}" />
+    </div>
+    <div class="form-group">
+        <label for="expression">Accounts:</label>
+        <div class="clearfix" style="margin: -10px;">
+            <f:for each="{accounts}" as="account">
+                <div class="well well-sm" style="float: left; margin: 10px;">
+                    <f:form.checkbox name="search[accounts]" multiple="true" value="{account.uid}" checked="{fp:inArray(array : search.accounts, value : account.uid)}" /> {account.description}<br>
+                    <f:render partial="Networks/{account.partialFolder}/Mode" arguments="{account : account}" />
+                </div>
+            </f:for>
+        </div>
+    </div>
+    <f:form.button type="submit" class="btn btn-default">Posts durchsuchen</f:form.button>
+</f:form>

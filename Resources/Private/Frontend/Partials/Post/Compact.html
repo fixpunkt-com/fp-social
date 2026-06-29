@@ -1,0 +1,16 @@
+<div class="post compact {account.} {f:if(condition : data.tx_fpsocial_post_crop, then : 'cropped')}" data-identifier="{post.identifier}" data-timestamp="{f:format.date(format : 'U', date : post.updatedTime)}" data-source="{source}">
+    <f:if condition="{post.pictures -> f:count()} && ({data.tx_fpsocial_post_picture} == '' || {data.tx_fpsocial_post_picture})">
+        <f:then>
+            <div class="image">
+                <f:render partial="Post/Parts/Image" arguments="{_all}" />
+                <div class="overlay">
+                    <f:render partial="Post/Parts/Text" arguments="{_all}" />
+                </div>
+            </div>
+        </f:then>
+        <f:else>
+            <f:render partial="Post/Parts/Text" arguments="{_all}" />
+        </f:else>
+    </f:if>
+    <f:render partial="Post/Parts/Bottom" arguments="{_all}" />
+</div>

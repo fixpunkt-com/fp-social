@@ -1,0 +1,30 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+<div class="text">
+    <p>
+        <small>
+            <f:format.date format="d.m.Y - H:i">{post.updatedTime}</f:format.date>
+        </small>
+    </p>
+    <div class="message">
+        <f:if condition="{post.headline}">
+            <div class="fw-bold mb-3">
+                <f:format.htmlentitiesDecode>{post.headline}</f:format.htmlentitiesDecode>
+            </div>
+        </f:if>
+        <f:if condition="{data.tx_fpsocial_post_crop}">
+            <f:then>
+                <f:format.crop maxCharacters="{data.tx_fpsocial_post_characters}">
+                    <f:format.raw><fp:format.emoji text="{post.message}" /></f:format.raw>
+                </f:format.crop>
+            </f:then>
+            <f:else>
+                <f:format.raw><fp:format.emoji text="{post.message}" /></f:format.raw>
+            </f:else>
+        </f:if>
+    </div>
+    <p class="mt-2 mb-0">
+        <f:link.external uri="{post.link}" target="_blank">
+            <f:translate key="template.post.readMore" />
+        </f:link.external>
+    </p>
+</div>

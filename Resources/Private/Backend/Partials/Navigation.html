@@ -1,0 +1,41 @@
+<ul>
+    <li>
+        <f:render section="listelement" arguments="{
+            action : 'list',
+            controller : 'Account',
+            icon : 'fa-comments-o',
+            label : 'Accounts anzeigen',
+            context : context
+        }" />
+    </li>
+    <li>
+        <f:render section="listelement" arguments="{
+            action : 'search',
+            controller : 'Post',
+            icon : 'fa-search',
+            label : 'Posts durchsuchen',
+            context : context
+        }" />
+    </li>
+    <li>
+        <f:render section="listelement" arguments="{
+            action : 'list',
+            controller : 'Synchronization',
+            icon : 'fa-refresh',
+            label : 'Synchronisations-Einstellungen',
+            context : context
+        }" />
+    </li>
+</ul>
+
+
+<f:section name="listelement">
+    <f:if condition="{context.controller} == {controller}">
+        <f:then>
+            <f:link.action action="{action}" controller="{controller}" class="selected"><i class="fa {icon}" aria-hidden="true"></i> {label}</f:link.action>
+        </f:then>
+        <f:else>
+            <f:link.action action="{action}" controller="{controller}"><i class="fa {icon}" aria-hidden="true"></i> {label}</f:link.action>
+        </f:else>
+    </f:if>
+</f:section>

@@ -1,0 +1,28 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+
+
+<div style="margin: 15px 0;">
+  <f:if condition="{currentPage} > 1">
+    <f:render section="button" arguments="{page : pagination.firstPageNumber, arguments : arguments, label : 'Erste Seite'}" />
+  </f:if>
+
+  <f:for each="{pagination.allPageNumbers}" as="page">
+    <f:render section="button" arguments="{page : page, arguments : arguments, label : page}" />
+  </f:for>
+
+  <f:if condition="{currentPage} < {pagination.lastPageNumber}">
+    <f:render section="button" arguments="{page : pagination.lastPageNumber, arguments : arguments, label : 'Letzte Seite'}" />
+  </f:if>
+</div>
+
+<f:section name="button">
+  <f:link.action
+          action="{settings.paginationSettings.action}"
+          controller="{settings.paginationSettings.controller}"
+          arguments="{fp:arrays.merge(array1 : arguments, array2 : '{page : page}')}"
+          class="btn btn-default {f:if(condition : '{settings.paginationSettings.page} == {page}', then : 'active')}"
+          style="padding: 5px 10px;"
+  >
+    {label}
+  </f:link.action>
+</f:section>

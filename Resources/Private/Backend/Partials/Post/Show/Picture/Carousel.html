@@ -1,0 +1,28 @@
+{namespace fp=Fixpunkt\FpSocial\ViewHelpers}
+<div id="carousel-post-{post.uid}" class="carousel slide">
+
+    <div class="carousel-indicators">
+        <f:for each="{post.pictures}" as="picture" iteration="iter">
+            <button type="button" data-bs-target="#carousel-post-{post.uid}" data-bs-slide-to="{iter.index}" class="{f:if(condition : iter.isFirst, then : 'active')}" aria-current="{f:if(condition : iter.isFirst, then : 'true', else : 'false')}" aria-label="Slide {iter.index}"></button>
+        </f:for>
+    </div>
+
+    <div class="carousel-inner" style="background: lightgrey;">
+        <f:for each="{post.pictures}" as="picture" iteration="iter">
+            <div class="carousel-item {f:if(condition : iter.isFirst, then : 'active')}">
+                <div class="d-flex justify-content-center">
+                    <f:render partial="Post/Show/Picture/Render" arguments="{picture : picture}" />
+                    <f:render partial="Post/Show/Picture/SelectedPicture" arguments="{picture : picture, post : post, postLink : postLink}" />
+                </div>
+            </div>
+        </f:for>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-post-{post.uid}" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel-post-{post.uid}" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

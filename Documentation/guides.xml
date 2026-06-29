@@ -1,11 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<guide xmlns="https://www.phpdoc.org/guides" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="https://www.phpdoc.org/guides ../vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd">
-    <project title="fp-fileprotector"/>
-    <extension
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- See  https://docs.typo3.org/permalink/h2document:guides-xml for documentation on this file-->
+<guides
+xmlns="https://www.phpdoc.org/guides"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="https://www.phpdoc.org/guides vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd"
+input-format="rst"
+>
+<project
+        title="fixpunkt/fp-social"
+        copyright="fixpunkt für digitales GmbH"
+/>
+<extension
         class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
-        github-organization="fixpunkt"
-        github-repository="fp-fileprotector"
-        typo3-core-preferred="stable"
-    />
-</guide>
+        edit-on-github="fixpunkt-com/fp-social"
+        edit-on-github-branch="main"
+        interlink-shortcode="fixpunkt/fp-social"
+        project-home="https://extensions.typo3.org/extension/fp_social"
+        project-issues="https://github.com/fixpunkt-com/fp-social/issues"
+        project-repository="https://github.com/fixpunkt-com/fp-social"
+        typo3-core-preferred="13.4"
+/>
+</guides>

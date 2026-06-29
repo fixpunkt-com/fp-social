@@ -1,0 +1,10 @@
+<f:switch expression="{account.inMode}">
+    <f:case value="profile">
+        Ausgabe von Account<br>
+        <small>@{account.label} ({account.channel})</small>
+    </f:case>
+    <f:case value="hashtag">
+        Ausgabe von Hashtag<br>
+        <small>#{account.inHashtag} (<f:translate key="tx_fpsocial_domain_model_account.in_hashtag_mode.{account.inHashtagMode}" />) durch @{account.label} ({account.channel})</small>
+    </f:case>
+</f:switch>
