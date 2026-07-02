@@ -126,7 +126,7 @@ class Instagram extends Account
     {
         switch ($this -> getInMode()) {
             case 'profile':
-                return 'https://www.instagram.com/' . $this -> getChannel();
+                return 'https://www.instagram.com/' . $this -> getLabel();
             case 'hashtag':
                 return 'https://www.instagram.com/explore/tags/' . $this -> getInHashtag();
         }
