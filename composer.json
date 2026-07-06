@@ -28,8 +28,6 @@
     "league/uri": "^7.0",
     "league/uri-components": "^7.0",
     "chefkoch/morphoji": "^1.1",
-    "linawolf/list-type-migration": "^1.0",
-    "fixpunkt/fp-base-utilities": "^2.3",
     "fixpunkt/fp-social-bridge": "^1.2"
   },
   "autoload": {
