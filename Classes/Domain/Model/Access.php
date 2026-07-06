@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Fixpunkt\FpSocial\Domain\Model;
 
+use Fixpunkt\FpSocialBridge\v2\Response\SocialServerErrorResponse;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerResponse;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
@@ -12,6 +13,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Access extends AbstractEntity
 {
@@ -188,10 +190,11 @@ class Access extends AbstractEntity
             $response = $e -> getResponse();
             $body = (string)$response -> getBody();
 
-            $jsonBody = json_decode($body);
+            /** @var SocialServerErrorResponse $response */
+            $response = SocialServerResponse::fromJson($body);
             throw new \Exception(
-                $jsonBody -> error -> message,
-                $jsonBody -> error -> code
+                $response -> getMessage(),
+                $response -> getCode()
             );
         } catch (ConnectException $e) {
             throw new \Exception('Die Adresse des Social Server konnte nicht aufgelöst werden. Überprüfe die API-Url in den Extension-Einstellungen.');
