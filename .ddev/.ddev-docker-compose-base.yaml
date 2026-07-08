@@ -68,6 +68,7 @@ services:
       - POSTGRES_PASSWORD=db
       - POSTGRES_USER=db
       - POSTGRES_DB=db
+      - HOME=/home/yannik
       - TZ=Europe/Berlin
       - USER=yannik
     command: ${DDEV_DB_CONTAINER_COMMAND}
@@ -175,6 +176,8 @@ services:
     - IS_DDEV_PROJECT=true
     - LINES
     - MYSQL_HISTFILE=/mnt/ddev-global-cache/mysqlhistory/${DDEV_SITENAME}-web/mysql_history
+    - N_PREFIX=/usr/local/n
+    - N_CACHE_PREFIX=/mnt/ddev-global-cache/n_prefix/${DDEV_SITENAME}-web
     - NODE_EXTRA_CA_CERTS=/mnt/ddev-global-cache/mkcert/rootCA.pem
     - npm_config_cache=/mnt/ddev-global-cache/npm
     - PGDATABASE=db
@@ -186,10 +189,6 @@ services:
     - TZ=Europe/Berlin
     - USER=yannik
     - VIRTUAL_HOST=${DDEV_HOSTNAME}
-    # Web /start.sh timeout (default_container_timeout - 5s). Prevents startup scripts from
-    # hitting container timeout limit, which would cause "ddev start" to fail completely.
-    # For N uses: "div (sub .DefaultContainerTimeout 5) N". Currently: 1 use (n-install.sh)
-    - START_SCRIPT_TIMEOUT=115
     
 
     healthcheck:
@@ -201,7 +200,7 @@ services:
       timeout: "70s"
   
   xhgui:
-    image: ddev/ddev-xhgui:v1.25.2
+    image: ddev/ddev-xhgui:v1.25.3
     container_name: ddev-${DDEV_SITENAME}-xhgui
     profiles:
       - xhgui

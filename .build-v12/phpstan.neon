@@ -4,3 +4,7 @@ parameters:
         - ../Classes
     bootstrapFiles:
         - vendor/autoload.php
+    ignoreErrors:
+        # ViewFactoryData/ViewFactoryInterface exist only in TYPO3 v13.3+/v14. The v12 code path
+        # is guarded at runtime by interface_exists(ViewFactoryInterface::class) and never runs here.
+        - '#Instantiated class TYPO3\\CMS\\Core\\View\\ViewFactoryData not found\.#'

@@ -224,7 +224,11 @@ class FrontendController extends ActionController
         }
 
         // TYPO3 v12 fallback.
-        return $this -> view -> renderPartial('Post/Show', '', $variables);
+        if (method_exists($this -> view, 'renderPartial')) {
+            return $this -> view -> renderPartial('Post/Show', '', $variables);
+        }
+
+        return '';
     }
 
     protected function getRecordsFromCollections(array $collectionIdentifiers, array $hashtags, array $preselectedRecordsIdentifiers, int $amount, array $referenceRecords = [], string $order = ''): array

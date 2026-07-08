@@ -5,7 +5,7 @@ services:
       context: /home/yannik/PhpstormProjects/fp-social/.ddev/.dbimageBuild
       dockerfile: Dockerfile
       args:
-        BASE_IMAGE: ddev/ddev-dbserver-mariadb-10.11:v1.25.2
+        BASE_IMAGE: ddev/ddev-dbserver-mariadb-10.11:v1.25.3
         gid: "1000"
         uid: "1000"
         username: yannik
@@ -14,14 +14,14 @@ services:
         com.ddev.approot: /home/yannik/PhpstormProjects/fp-social
         com.ddev.platform: ddev
         com.ddev.site-name: fp-social
-        com.ddev.webtag: v1.25.2
+        com.ddev.webtag: v1.25.3
     cap_add:
       - SYS_NICE
     command: []
     container_name: ddev-fp-social-db
     environment:
       BITNAMI_VOLUME_DIR: ""
-      COLUMNS: "80"
+      COLUMNS: "227"
       DDEV_DATABASE: mariadb:10.11
       DDEV_DATABASE_FAMILY: mysql
       DDEV_GID: "1000"
@@ -41,11 +41,12 @@ services:
       DDEV_TLD: ddev.site
       DDEV_UID: "1000"
       DDEV_USER: yannik
-      DDEV_VERSION: v1.25.2
+      DDEV_VERSION: v1.25.3
       DOCKER_IP: 127.0.0.1
+      HOME: /home/yannik
       HOST_DOCKER_INTERNAL_IP: 172.17.0.1
       IS_DDEV_PROJECT: "true"
-      LINES: "24"
+      LINES: "30"
       MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/fp-social-db/mysql_history
       PGDATABASE: db
       PGHOST: 127.0.0.1
@@ -68,13 +69,13 @@ services:
       retries: 70
       start_period: 2m0s
       start_interval: 1s
-    image: ddev/ddev-dbserver-mariadb-10.11:v1.25.2-fp-social-built
+    image: ddev/ddev-dbserver-mariadb-10.11:v1.25.3-fp-social-built
     labels:
       com.ddev.app-type: php
       com.ddev.approot: /home/yannik/PhpstormProjects/fp-social
       com.ddev.platform: ddev
       com.ddev.site-name: fp-social
-      com.ddev.webtag: v1.25.2
+      com.ddev.webtag: v1.25.3
     networks:
       ddev_default: null
       default: null
@@ -83,7 +84,7 @@ services:
         host_ip: 127.0.0.1
         target: 3306
         protocol: tcp
-    restart: "no"
+    restart: 'no'
     stop_grace_period: 1m0s
     user: 1000:1000
     volumes:
@@ -110,7 +111,7 @@ services:
       context: /home/yannik/PhpstormProjects/fp-social/.ddev/.webimageBuild
       dockerfile: Dockerfile
       args:
-        BASE_IMAGE: ddev/ddev-webserver:v1.25.2
+        BASE_IMAGE: ddev/ddev-webserver:v1.25.3
         DDEV_DATABASE: mariadb:10.11
         DDEV_PHP_VERSION: "8.4"
         gid: "1000"
@@ -121,14 +122,14 @@ services:
         com.ddev.approot: /home/yannik/PhpstormProjects/fp-social
         com.ddev.platform: ddev
         com.ddev.site-name: fp-social
-        com.ddev.webtag: v1.25.2
+        com.ddev.webtag: v1.25.3
     cap_add:
       - SYS_PTRACE
     command:
       - /pre-start.sh
     container_name: ddev-fp-social-web
     environment:
-      COLUMNS: "80"
+      COLUMNS: "227"
       COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
       COREPACK_HOME: /mnt/ddev-global-cache/corepack
       DDEV_APPROOT: /var/www/html
@@ -156,7 +157,7 @@ services:
       DDEV_TLD: ddev.site
       DDEV_UID: "1000"
       DDEV_USER: yannik
-      DDEV_VERSION: v1.25.2
+      DDEV_VERSION: v1.25.3
       DDEV_WEB_ENTRYPOINT: /mnt/ddev_config/web-entrypoint.d
       DDEV_WEBSERVER_TYPE: nginx-fpm
       DDEV_XDEBUG_ENABLED: "false"
@@ -169,8 +170,10 @@ services:
       HTTP_EXPOSE: 80:80,8025:8025
       HTTPS_EXPOSE: 443:80,8026:8025
       IS_DDEV_PROJECT: "true"
-      LINES: "24"
+      LINES: "30"
       MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/fp-social-web/mysql_history
+      N_CACHE_PREFIX: /mnt/ddev-global-cache/n_prefix/fp-social-web
+      N_PREFIX: /usr/local/n
       NODE_EXTRA_CA_CERTS: /mnt/ddev-global-cache/mkcert/rootCA.pem
       PGDATABASE: db
       PGHOST: db
@@ -178,7 +181,6 @@ services:
       PGUSER: db
       PHP_IDE_CONFIG: serverName=fp-social.ddev.site
       SSH_AUTH_SOCK: /home/.ssh-agent/socket
-      START_SCRIPT_TIMEOUT: "115"
       TZ: Europe/Berlin
       USER: yannik
       VIRTUAL_HOST: fp-social.ddev.site
@@ -195,13 +197,13 @@ services:
       retries: 70
       start_period: 2m0s
       start_interval: 1s
-    image: ddev/ddev-webserver:v1.25.2-fp-social-built
+    image: ddev/ddev-webserver:v1.25.3-fp-social-built
     labels:
       com.ddev.app-type: php
       com.ddev.approot: /home/yannik/PhpstormProjects/fp-social
       com.ddev.platform: ddev
       com.ddev.site-name: fp-social
-      com.ddev.webtag: v1.25.2
+      com.ddev.webtag: v1.25.3
     networks:
       ddev_default: null
       default: null
@@ -218,7 +220,7 @@ services:
         host_ip: 127.0.0.1
         target: 8025
         protocol: tcp
-    restart: "no"
+    restart: 'no'
     user: 1000:1000
     volumes:
       - type: bind
@@ -268,17 +270,17 @@ services:
       retries: 70
       start_period: 2m0s
       start_interval: 1s
-    image: ddev/ddev-xhgui:v1.25.2
+    image: ddev/ddev-xhgui:v1.25.3
     labels:
       com.ddev.app-type: php
       com.ddev.approot: /home/yannik/PhpstormProjects/fp-social
       com.ddev.platform: ddev
       com.ddev.site-name: fp-social
-      com.ddev.webtag: v1.25.2
+      com.ddev.webtag: v1.25.3
     networks:
       ddev_default: null
       default: null
-    restart: "no"
+    restart: 'no'
     x-ddev:
       describe-url-port: 'Launch: ddev xhgui'
 networks:
@@ -292,7 +294,7 @@ networks:
       com.ddev.approot: /home/yannik/PhpstormProjects/fp-social
       com.ddev.platform: ddev
       com.ddev.site-name: fp-social
-      com.ddev.webtag: v1.25.2
+      com.ddev.webtag: v1.25.3
 volumes:
   database:
     name: fp-social-mariadb
