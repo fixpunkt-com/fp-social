@@ -17,6 +17,7 @@ images) can be adjusted in the same way for both plugins. These settings are
 described centrally under :ref:`post-display`.
 
 ..  toctree::
+    :hidden:
     :maxdepth: 1
     :titlesonly:
 

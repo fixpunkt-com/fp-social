@@ -20,6 +20,10 @@ Synchronizing accounts, managing and searching posts
 
 The backend module lets you conveniently perform various tasks:
 
+*   :ref:`Manage accesses and accounts <access-and-accounts>`
+
+    You manage accesses and accounts.
+
 *   :ref:`Synchronize accounts and manage posts <manage-posts>`
 
     You can synchronize accounts, import posts, show and hide them, and choose
@@ -35,6 +39,7 @@ The backend module lets you conveniently perform various tasks:
     configure what should happen with newly imported posts.
 
 ..  toctree::
+    :hidden:
     :maxdepth: 1
     :titlesonly:
 
