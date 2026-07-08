@@ -1,12 +1,6 @@
 {
   "name": "fixpunkt/fp-social-cs-tools",
   "description": "Isolated dev tooling (coding standards + static analysis) for fp_social — not part of the extension package.",
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://repo.packagist.com/fixpunkt-werbeagentu/"
-    }
-  ],
   "require-dev": {
     "typo3/coding-standards": "^0.8",
     "phpstan/phpstan": "^2.1",
@@ -18,12 +12,10 @@
     "typo3/cms-frontend": "^13.4",
     "typo3/cms-backend": "^13.4",
     "typo3/cms-install": "^13.4",
-    "fixpunkt/fp-social-bridge": "^1.2",
-    "fixpunkt/fp-base-utilities": "*",
+  	"fixpunkt/fp-social-bridge": "dev-feature/typo3-14",
     "league/uri": "*",
     "league/uri-components": "*",
-    "chefkoch/morphoji": "^1",
-    "linawolf/list-type-migration": "*"
+    "chefkoch/morphoji": "^1"
   },
   "config": {
     "allow-plugins": {
