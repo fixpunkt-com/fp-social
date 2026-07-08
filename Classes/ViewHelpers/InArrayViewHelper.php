@@ -8,7 +8,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class InArrayViewHelper extends AbstractViewHelper
 {
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('array', 'array', 'Das zu durchsuchende Array.', true);
         $this->registerArgument('value', 'mixed', 'Das zu findende Objekt.', true);

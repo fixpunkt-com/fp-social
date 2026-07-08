@@ -69,15 +69,16 @@ class PostController extends AbstractController
      * Updates a single post.
      * @param Post $post
      * @param PostLink $postLink
+     * @return ResponseInterface
      * @throws IllegalObjectTypeException
      * @throws UnknownObjectException
      */
-    public function updateAction(Post $post, PostLink $postLink): void
+    public function updateAction(Post $post, PostLink $postLink): ResponseInterface
     {
         $this -> postRepository -> update($post);
         GeneralUtility::makeInstance(PostUpdatedEvent::class, $post);
 
         $this -> addFlashMessage('Der Post wurde aktualisiert.');
-        $this -> redirect('show', 'Account', null, ['account' => $postLink -> getAccount()]);
+        return $this -> redirect('show', 'Account', null, ['account' => $postLink -> getAccount()]);
     }
 }

@@ -62,12 +62,12 @@ class ImageViewHelper extends AbstractViewHelper
             return '';
         }
 
-        $container = $this->templateVariableContainer;
-        $container->add('image', $image -> getFilereference());
+        $variableProvider = $this->renderingContext->getVariableProvider();
+        $variableProvider->add('image', $image -> getFilereference());
 
         $content = $this->renderChildren();
 
-        $container->remove('image');
+        $variableProvider->remove('image');
 
         return $content;
     }

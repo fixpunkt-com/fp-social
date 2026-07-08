@@ -16,7 +16,6 @@ $tca = [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'label,channel,in_hashtag,tw_hashtag,wp_tag,wp_author',
         'iconfile' => 'EXT:fp_social/Resources/Public/Icons/Models/tx_fpsocial_domain_model_account.svg',
         'type' => 'network',
     ],

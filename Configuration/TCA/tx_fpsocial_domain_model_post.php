@@ -9,7 +9,6 @@ return [
         'label_userFunc' => \Fixpunkt\FpSocial\Userfuncs\Labels::class . '->post',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'searchFields' => 'id,url,updated_time,headline,message',
         'iconfile' => 'EXT:fp_social/Resources/Public/Icons/Models/tx_fpsocial_domain_model_post.svg',
     ],
     'palettes' => [
@@ -29,7 +28,7 @@ return [
     'types' => [
         '1' => ['showitem' => '
 		    --palette--;LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_post.palettes.post_data;post_data,
-		    updated_time, headline, message, 
+		    updated_time, headline, message,
 		    --palette--;LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_post.palettes.more;more,
 		    --palette--;LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_post.palettes.pictures;pictures,
 		    --palette--;LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_post.palettes.visible;visible,
@@ -52,7 +51,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'requires' => true,
+                'required' => true,
                 'eval' => 'trim',
             ],
         ],
@@ -91,7 +90,6 @@ return [
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
-                'reqired' => true,
                 'eval' => 'trim',
             ],
         ],

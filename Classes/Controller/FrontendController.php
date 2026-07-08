@@ -12,6 +12,10 @@ use Fixpunkt\FpSocial\Domain\Repository\PostRepository;
 use Fixpunkt\FpSocial\Events\RecordCollectionEvent;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
@@ -179,18 +183,48 @@ class FrontendController extends ActionController
         $rendered = [];
         /** @var RecordInterface $record */
         foreach ($records as $record) {
-            $rendered[] = $this -> view -> renderPartial('Post/Show', '', [
-                'post' => $record,
-                'account' => $record -> getAccount(),
-                'source' => 'collection',
-                'data' => $contentObjectData,
-            ]);
+            $rendered[] = $this -> renderRecord($record, $contentObjectData);
         }
 
         return $this -> jsonResponse(json_encode([
             'records' => $rendered,
             'amount' => count($rendered),
         ]));
+    }
+
+    /**
+     * Renders a single record (the "Post/Show" partial) to a string.
+     *
+     * TYPO3 v13.3+/v14 no longer expose the Fluid-specific renderPartial() on the Extbase
+     * view, so we render a dedicated template through the generic ViewFactory there. On v12
+     * (no ViewFactoryInterface) we keep using the view's renderPartial().
+     */
+    protected function renderRecord(RecordInterface $record, array $contentObjectData): string
+    {
+        $variables = [
+            'post' => $record,
+            'account' => $record -> getAccount(),
+            'source' => 'collection',
+            'data' => $contentObjectData,
+        ];
+
+        if (interface_exists(ViewFactoryInterface::class)) {
+            $frameworkConfiguration = $this -> configurationManager -> getConfiguration(
+                ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+            );
+            $viewFactory = GeneralUtility::makeInstance(ViewFactoryInterface::class);
+            $view = $viewFactory -> create(new ViewFactoryData(
+                templateRootPaths: $frameworkConfiguration['view']['templateRootPaths'] ?? [],
+                partialRootPaths: $frameworkConfiguration['view']['partialRootPaths'] ?? [],
+                layoutRootPaths: $frameworkConfiguration['view']['layoutRootPaths'] ?? [],
+                request: $this -> request,
+            ));
+            $view -> assignMultiple($variables);
+            return $view -> render('Ajax/Post');
+        }
+
+        // TYPO3 v12 fallback.
+        return $this -> view -> renderPartial('Post/Show', '', $variables);
     }
 
     protected function getRecordsFromCollections(array $collectionIdentifiers, array $hashtags, array $preselectedRecordsIdentifiers, int $amount, array $referenceRecords = [], string $order = ''): array

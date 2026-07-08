@@ -9,7 +9,6 @@ return [
         'sortby' => 'display_name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'searchFields' => 'posts,display_name,system_name',
         'iconfile' => 'EXT:fp_social/Resources/Public/Icons/Models/tx_fpsocial_domain_model_mention.svg',
     ],
     'types' => [

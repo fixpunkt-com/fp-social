@@ -9,7 +9,6 @@ return [
         'sortby' => 'hashtag',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'searchFields' => 'hashtag',
         'iconfile' => 'EXT:fp_social/Resources/Public/Icons/Models/tx_fpsocial_domain_model_hashtag.svg',
     ],
     'types' => [

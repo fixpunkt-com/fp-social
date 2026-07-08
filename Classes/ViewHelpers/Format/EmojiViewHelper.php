@@ -8,7 +8,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class EmojiViewHelper extends AbstractViewHelper
 {
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('text', 'string', 'Der Text in dem die Emojis ersetzt werden sollen.', true);
     }

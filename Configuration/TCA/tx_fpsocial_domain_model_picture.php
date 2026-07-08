@@ -8,7 +8,6 @@ return [
         'label' => 'uri_identifier',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'searchFields' => 'uri',
         'iconfile' => 'EXT:fp_social/Resources/Public/Icons/Models/tx_fpsocial_domain_model_picture.svg',
     ],
     'types' => [

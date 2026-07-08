@@ -26,7 +26,7 @@ abstract class AbstractController extends ActionController
      */
     protected function initializeView()
     {
-        if (ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isBackend()) {
+        if (ApplicationType::fromRequest($this->request)->isBackend()) {
             $this -> view -> assign(
                 'context',
                 [

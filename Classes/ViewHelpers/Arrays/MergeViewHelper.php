@@ -8,7 +8,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class MergeViewHelper extends AbstractViewHelper
 {
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('array1', 'array', 'Das erste Array.', true);
         $this->registerArgument('array2', 'array', 'Das zweite Array.', true);
