@@ -10,7 +10,8 @@ return [
         'crdate' => 'crdate',
         'enablecolumns' => [
             'disabled' => 'hidden',
-        ],        'iconfile' => 'EXT:fp_social/Resources/Public/Icons/Models/tx_fpsocial_domain_model_postlink.svg',
+        ],
+        'iconfile' => 'EXT:fp_social/Resources/Public/Icons/Models/tx_fpsocial_domain_model_postlink.svg',
     ],
     'types' => [
         '1' => ['showitem' => '

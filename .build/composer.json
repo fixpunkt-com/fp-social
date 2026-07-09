@@ -1,6 +1,6 @@
 {
-  "name": "fixpunkt/fp-social-cs-tools-v14",
-  "description": "Isolated tooling to static-analyse fp_social against TYPO3 14.4 (highest supported). Mirror of .build/ but pinned to the v14 line.",
+  "name": "fixpunkt/fp-social-cs-tools",
+  "description": "Isolated tooling to static-analyse fp_social against TYPO3 14.3 (highest supported).",
   "autoload": {
     "psr-4": {
       "Fixpunkt\\FpSocial\\": "../Classes/"
