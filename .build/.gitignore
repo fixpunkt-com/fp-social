@@ -1,5 +1,5 @@
-# Isolated dev toolchain: only the manifest is tracked, everything that
-# composer/TYPO3 generates here (vendor, lock, published public assets, …) is not.
+# Isolated v14 analysis toolchain: only the manifests are tracked.
 /*
 !.gitignore
 !composer.json
+!phpstan.neon
