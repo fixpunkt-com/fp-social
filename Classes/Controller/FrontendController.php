@@ -18,6 +18,7 @@ use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3Fluid\Fluid\View\AbstractTemplateView;
 
 class FrontendController extends ActionController
 {
@@ -223,8 +224,10 @@ class FrontendController extends ActionController
             return $view -> render('Ajax/Post');
         }
 
-        // TYPO3 v12 fallback.
-        if (method_exists($this -> view, 'renderPartial')) {
+        // TYPO3 v12 fallback. AbstractTemplateView::renderPartial() accepts a null $sectionName
+        // (unlike the imprecise ViewInterface PHPDoc), which is required so the whole partial —
+        // not a named section — is rendered.
+        if ($this -> view instanceof AbstractTemplateView) {
             return $this -> view -> renderPartial('Post/Show', null, $variables);
         }
 

@@ -18,12 +18,12 @@
   "require": {
     "php": "^8.4",
     "typo3/cms-core": "^12.4 || ^13.4 || ^14.4",
-    "typo3/cms-backend": "^12.4 || ^13.4 || ^14.4",
-    "typo3/cms-extbase": "^12.4 || ^13.4 || ^14.4",
-    "typo3/cms-fluid": "^12.4 || ^13.4 || ^14.4",
-    "typo3/cms-install": "^12.4 || ^13.4 || ^14.4",
+    "typo3/cms-backend": "*",
+    "typo3/cms-extbase": "*",
+    "typo3/cms-fluid": "*",
+    "typo3/cms-install": "*",
 
-	"fixpunkt/fp-social-bridge": "dev-feature/typo3-14",
+	"fixpunkt/fp-social-bridge": "^1.3",
 
     "ext-json": "*",
     "ext-curl": "*",
