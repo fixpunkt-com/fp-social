@@ -225,7 +225,7 @@ class FrontendController extends ActionController
 
         // TYPO3 v12 fallback.
         if (method_exists($this -> view, 'renderPartial')) {
-            return $this -> view -> renderPartial('Post/Show', '', $variables);
+            return $this -> view -> renderPartial('Post/Show', null, $variables);
         }
 
         return '';
