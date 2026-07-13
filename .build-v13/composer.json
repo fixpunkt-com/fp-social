@@ -1,6 +1,11 @@
 {
   "name": "fixpunkt/fp-social-cs-tools-v13",
   "description": "Isolated dev tooling (coding standards + static analysis) for fp_social — not part of the extension package. Mirror of .build/ but pinned to the v13 line.",
+	"autoload": {
+		"psr-4": {
+			"Fixpunkt\\FpSocial\\": "../Classes/"
+		}
+	},
   "require-dev": {
     "phpstan/extension-installer": "^1.4",
     "saschaegerer/phpstan-typo3": "^2.1",
