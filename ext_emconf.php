@@ -10,11 +10,9 @@ $EM_CONF[$_EXTKEY] = [
     'version' => '17.4.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.4.0-14.3.99',
-            'php' => '8.4.0-8.5.99',
-            'fp_social_bridge' => '1.2.0-0.0.0',
-            'fp_base_utilities' => '2.3.0-0.0.0',
-            'list_type_migration' => '1.0.0-0.0.0',
+            'typo3' => '12.4.0-14.99.99',
+            'php' => '8.4.0-8.99.99',
+            'fp_social_bridge' => '1.3.0-1.99.99',
         ],
         'conflicts' => [],
         'suggests' => [],
