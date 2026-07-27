@@ -4,6 +4,25 @@
         <header/>
         <body>
 
+            <trans-unit id="plugin.group">
+                <source>Social Wall</source>
+            </trans-unit>
+            <trans-unit id="plugin.settings">
+                <source>Plugin-Einstellungen</source>
+            </trans-unit>
+            <trans-unit id="plugin.post.title">
+                <source>Post ausgeben</source>
+            </trans-unit>
+            <trans-unit id="plugin.post.description">
+                <source>Gibt einen einzelnen Social-Media-Post aus.</source>
+            </trans-unit>
+            <trans-unit id="plugin.wall.title">
+                <source>Social Wall</source>
+            </trans-unit>
+            <trans-unit id="plugin.wall.description">
+                <source>Gibt die Posts von einem oder mehreren Social-Media-Accounts als Wall aus.</source>
+            </trans-unit>
+
             <trans-unit id="mainsheet.title">
                 <source>Allgemeine Einstellungen</source>
             </trans-unit>
@@ -81,7 +100,7 @@
             <trans-unit id="sheetWall.loadBefore.enable">
                 <source>Manuelles Nachladen von älteren Records erlauben</source>
             </trans-unit>
-            <trans-unit id="sheetWall.loadBefore.trans-unit">
+            <trans-unit id="sheetWall.loadBefore.label">
                 <source>Beschriftung Nachladen Button</source>
             </trans-unit>
         </body>

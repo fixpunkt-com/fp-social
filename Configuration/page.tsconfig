@@ -1,1 +1,24 @@
 templates.fixpunkt/fp-social.1643293191 = fixpunkt/fp-social:Resources/Private/Backend
+
+mod.wizards.newContentElement.wizardItems.fpsocial {
+    header = LLL:EXT:fp_social/Resources/Private/Language/locallang_flex_output.xlf:plugin.group
+    elements {
+        fpsocial_wall {
+            iconIdentifier = fpsocial-plugin-wall
+            title = LLL:EXT:fp_social/Resources/Private/Language/locallang_flex_output.xlf:plugin.wall.title
+            description = LLL:EXT:fp_social/Resources/Private/Language/locallang_flex_output.xlf:plugin.wall.description
+            tt_content_defValues {
+                CType = fpsocial_wall
+            }
+        }
+        fpsocial_post {
+            iconIdentifier = fpsocial-plugin-post
+            title = LLL:EXT:fp_social/Resources/Private/Language/locallang_flex_output.xlf:plugin.post.title
+            description = LLL:EXT:fp_social/Resources/Private/Language/locallang_flex_output.xlf:plugin.post.description
+            tt_content_defValues {
+                CType = fpsocial_post
+            }
+        }
+    }
+    show = *
+}

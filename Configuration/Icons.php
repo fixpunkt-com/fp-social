@@ -8,4 +8,12 @@ return [
         'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
         'source' => 'EXT:fp_social/Resources/Public/Icons/Modules/manage.jpg',
     ],
+    'fpsocial-plugin-wall' => [
+        'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        'source' => 'EXT:fp_social/Resources/Public/Icons/Extension.svg',
+    ],
+    'fpsocial-plugin-post' => [
+        'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        'source' => 'EXT:fp_social/Resources/Public/Icons/Models/tx_fpsocial_domain_model_post.svg',
+    ],
 ];
