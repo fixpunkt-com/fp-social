@@ -115,7 +115,7 @@ class Wordpress extends Account
 
     public function getChannelLink(): string
     {
-        return "<a href='" . $this -> getChannelUri() . "' target='_blank'>@" . $this -> getChannel() . '</a>';
+        return "<a href='" . $this -> getChannelUri() . "' target='_blank'>" . $this -> getLabel() . '</a>';
     }
     public function getChannelUri(): string
     {
