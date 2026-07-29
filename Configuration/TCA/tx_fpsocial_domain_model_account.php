@@ -36,7 +36,7 @@ $tca = [
             'showitem' => 'in_mode, label, channel, in_hashtag, in_hashtag_mode',
         ],
         'wordpress' => [
-            'showitem' => 'wp_url, wp_mode, wp_tag, wp_author',
+            'showitem' => 'label, wp_url, wp_mode, wp_tag, wp_author',
         ],
         'youtube' => [
             'showitem' => 'channel',
