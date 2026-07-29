@@ -7,31 +7,37 @@ namespace Fixpunkt\FpSocial\Utilities;
 use Fixpunkt\FpSocial\Domain\Model\Account;
 use Fixpunkt\FpSocial\Domain\Model\Post;
 use Fixpunkt\FpSocial\Domain\Model\PostLink;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Service\CacheService;
 
 // ToDo: Clear only cache if the content actually has changed.
 
 class CacheUtility
 {
-    /** @var FlexFormService  */
-    protected FlexFormService $flexFormService;
-    /** @var CacheService  */
-    protected CacheService $cacheService;
+    /**
+     * CType of the "Wall" plugin (registered as a content element via ExtensionUtility).
+     */
+    private const CTYPE_WALL = 'fpsocial_wall';
+    /**
+     * CType of the single "Post" plugin.
+     */
+    private const CTYPE_POST = 'fpsocial_post';
 
     /**
-     * @param FlexFormService $flexFormService
-     * @param CacheService $cacheService
+     * Table that account collection identifiers point to (format "<table>:<uid>").
      */
-    public function __construct(FlexFormService $flexFormService, CacheService $cacheService)
-    {
-        $this -> flexFormService = $flexFormService;
-        $this -> cacheService = $cacheService;
-    }
+    private const TABLE_ACCOUNT = 'tx_fpsocial_domain_model_account';
+    /**
+     * Table that record identifiers point to (format "<table>:<uid>").
+     */
+    private const TABLE_POSTLINK = 'tx_fpsocial_domain_model_postlink';
+
+    public function __construct(
+        protected readonly ConnectionPool $connectionPool,
+        protected readonly CacheService $cacheService
+    ) {}
 
     /**
      * Clears the cache of all pages, where a given post could be displayed.
@@ -39,17 +45,25 @@ class CacheUtility
      */
     public function clearCacheForPost(Post $post): void
     {
-        $plugins = $this -> getPluginsAndConfigurations(['Wall', 'Account', 'Post']);
-        $accountUids = $this -> getAccountUidsFromPosts($post);
+        $identifiers = $this -> getIdentifiersFromPost($post);
+        $accountIdentifiers = $identifiers['accounts'];
+        $recordIdentifiers = $identifiers['records'];
 
-        foreach ($plugins as $plugin) {
-            if (
-                $plugin['list_type'] == 'fpsocial_wall' && count($accountUids) > count(array_diff($accountUids, explode(',', ($plugin['settings']['accounts'] ?? '')))) ||
-                $plugin['list_type'] == 'fpsocial_account' && in_array(($plugin['settings']['account'] ?? 0), $accountUids) ||
-                $plugin['list_type'] == 'fpsocial_post' && ($plugin['settings']['post'] ?? 0) == $post -> getUid()
-            ) {
+        foreach ($this -> getPlugins() as $plugin) {
+            $matches = false;
+            if ($plugin['CType'] === self::CTYPE_WALL) {
+                $wallAccounts = GeneralUtility::trimExplode(',', (string)($plugin['tx_fpsocial_accounts'] ?? ''), true);
+                $wallRecords = GeneralUtility::trimExplode(',', (string)($plugin['tx_fpsocial_records'] ?? ''), true);
+                $matches = (bool)array_intersect($accountIdentifiers, $wallAccounts)
+                    || (bool)array_intersect($recordIdentifiers, $wallRecords);
+            } elseif ($plugin['CType'] === self::CTYPE_POST) {
+                $selectedRecord = trim((string)($plugin['tx_fpsocial_post'] ?? ''));
+                $matches = $selectedRecord !== '' && in_array($selectedRecord, $recordIdentifiers, true);
+            }
+
+            if ($matches) {
                 // ToDo: Check if content actually has changed
-                $this -> clearPageCache($plugin['pid']);
+                $this -> clearPageCache((int)$plugin['pid']);
             }
         }
     }
@@ -60,81 +74,68 @@ class CacheUtility
      */
     public function clearCacheForAccount(Account $account): void
     {
-        $plugins = $this -> getPluginsAndConfigurations(['Account', 'Wall']);
+        $accountIdentifier = self::TABLE_ACCOUNT . ':' . $account -> getUid();
 
-        foreach ($plugins as $plugin) {
-            if (
-                $plugin['list_type'] == 'fpsocial_wall' && in_array($account -> getUid(), explode(',', ($plugin['settings']['accounts'] ?? ''))) ||
-                $plugin['list_type'] == 'fpsocial_account' && ($plugin['settings']['account'] ?? 0) == $account -> getUid()
-            ) {
+        foreach ($this -> getPlugins() as $plugin) {
+            if ($plugin['CType'] !== self::CTYPE_WALL) {
+                continue;
+            }
+            $wallAccounts = GeneralUtility::trimExplode(',', (string)($plugin['tx_fpsocial_accounts'] ?? ''), true);
+            if (in_array($accountIdentifier, $wallAccounts, true)) {
                 // ToDo: Check if content actually has changed
-                $this -> clearPageCache($plugin['pid']);
+                $this -> clearPageCache((int)$plugin['pid']);
             }
         }
     }
 
     /**
-     * Returns a list, where a given plugin is integrated.
-     * @param array $pluginNames
+     * Returns all fp_social content elements (wall + single post) with the columns
+     * relevant for the cache invalidation.
      * @return array
      */
-    private function getPluginsAndConfigurations(array $pluginNames): array
+    private function getPlugins(): array
     {
-        /** @var QueryBuilder $queryBuilder */
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tt_content')->createQueryBuilder();
+        $queryBuilder = $this -> connectionPool -> getConnectionForTable('tt_content') -> createQueryBuilder();
 
-        // Get constraints for list_types
-        $orConstraints = [];
-        foreach ($pluginNames as $pluginName) {
-            $qualifier = 'fpsocial_' . strtolower($pluginName);
-            $orConstraints[] = $queryBuilder->expr()->eq('list_type', $queryBuilder->createNamedParameter($qualifier));
-
-        }
-
-        // Create statement
-        $statement = $queryBuilder
-            -> select('uid', 'pid', 'list_type', 'pi_flexform')
+        return $queryBuilder
+            -> select('uid', 'pid', 'CType', 'tx_fpsocial_accounts', 'tx_fpsocial_records', 'tx_fpsocial_post')
             -> from('tt_content')
             -> where(
-                $queryBuilder->expr()->eq('CType', $queryBuilder->createNamedParameter('list')),
-                $queryBuilder -> expr() -> or(
-                    ...$orConstraints
+                $queryBuilder -> expr() -> in(
+                    'CType',
+                    $queryBuilder -> createNamedParameter(
+                        [self::CTYPE_WALL, self::CTYPE_POST],
+                        Connection::PARAM_STR_ARRAY
+                    )
                 )
             )
-            -> executeQuery();
-
-        // Catch results and enrich it.
-        $results = $statement -> fetchAllAssociative();
-        foreach ($results as &$result) {
-            $flexFormArray = $this -> flexFormService -> convertFlexFormContentToArray($result['pi_flexform']);
-
-            $result['settings'] = array_key_exists('settings', $flexFormArray) ? $flexFormArray['settings'] : [];
-            unset($result['pi_flexform']);
-        }
-
-        return $results;
+            -> executeQuery()
+            -> fetchAllAssociative();
     }
 
     /**
-     * Gets the accounts of an post.
+     * Collects the collection/record identifiers ("<table>:<uid>") a post is reachable through,
+     * so they can be matched against the identifier lists stored in the plugin content elements.
      * @param Post $post
-     * @return array
+     * @return array{accounts: string[], records: string[]}
      */
-    private function getAccountUidsFromPosts(Post $post): array
+    private function getIdentifiersFromPost(Post $post): array
     {
-        $accounts = new ObjectStorage();
+        $accountIdentifiers = [];
+        $recordIdentifiers = [];
+
         /** @var PostLink $postLink */
-        foreach ($post -> getAccounts() as $postLink) {
-            // ToDo: Move this one to Post-Model.
-            $accounts -> attach($postLink -> getAccount());
+        foreach ($post -> getAccounts() ?? [] as $postLink) {
+            $recordIdentifiers[] = self::TABLE_POSTLINK . ':' . $postLink -> getUid();
+
+            $account = $postLink -> getAccount();
+            $accountIdentifiers[$account -> getUid()] = self::TABLE_ACCOUNT . ':' . $account -> getUid();
         }
 
-        $uids = [];
-        /** @var Account $account */
-        foreach ($accounts as $account) {
-            $uids[] = $account -> getUid();
-        }
-        return $uids;
+        return [
+            'accounts' => array_values($accountIdentifiers),
+            'records' => $recordIdentifiers,
+        ];
     }
 
     /**
