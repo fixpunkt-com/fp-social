@@ -13,9 +13,6 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-/**
- * @method QueryResultInterface findByAccount(\Fixpunkt\FpSocial\Domain\Model\Account $account)
- */
 class PostLinkRepository extends Repository
 {
     // Order by BE sorting
