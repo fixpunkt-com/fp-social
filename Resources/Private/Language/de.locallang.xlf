@@ -298,6 +298,14 @@
 				<source>Image</source>
 				<target>Bild</target>
 			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_picture.hidden">
+				<source>Hide in the frontend</source>
+				<target>Im Frontend ausblenden</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_picture.hidden.option">
+				<source>Do not display this image in the frontend</source>
+				<target>Dieses Bild im Frontend nicht anzeigen</target>
+			</trans-unit>
 
 			<!-- Post Link -->
 			<trans-unit id="tx_fpsocial_domain_model_postlink">
@@ -315,6 +323,10 @@
 			<trans-unit id="tx_fpsocial_domain_model_postlink.hidden">
 				<source>Hide in the frontend</source>
 				<target>Im Frontend ausblenden</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_postlink.hidden.option">
+				<source>Do not display this post in the frontend</source>
+				<target>Diesen Post im Frontend nicht anzeigen</target>
 			</trans-unit>
 
 			<!-- Mention -->

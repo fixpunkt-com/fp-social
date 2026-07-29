@@ -2,8 +2,6 @@ import $ from 'jquery';
 import AjaxRequest from "@typo3/core/ajax/ajax-request.js";
 
 // Ein- und ausblenden von Details
-console.log("hier!");
-console.log($);
 $('#console').on('click', '.detailsTrigger', function() {
     const li = $(this).closest("li");
     const details = li.find('.details');
@@ -52,7 +50,8 @@ function readPosts(account, maxAmount, currentAmount, nextRequest) {
         account: account
     }
     if (typeof nextRequest !== "undefined") {
-        uriParameters.uri = encodeURIComponent(nextRequest);
+        // AjaxRequest kodiert die Query-Parameter selbst, hier darf nicht vorkodiert werden.
+        uriParameters.uri = nextRequest;
     }
 
     new AjaxRequest(TYPO3.settings.ajaxUrls.fpsocial_synchronize_deep)

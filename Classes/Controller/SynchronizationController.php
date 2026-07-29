@@ -43,7 +43,7 @@ class SynchronizationController extends AbstractController
         $accounts = $this -> accountRepository -> findAll();
         $sortedAccounts = $this -> accountRepository -> sortAccoutsByNetwork($accounts);
 
-        $view = $this -> moduleTemplateFactory -> create($this -> request);
+        $view = $this -> createModuleView();
         $view -> assignMultiple([
             'sortedAccounts' => $sortedAccounts,
         ]);
@@ -77,10 +77,11 @@ class SynchronizationController extends AbstractController
     public function accountAction(Account $account, bool $deep = false): ResponseInterface
     {
         if ($deep) {
-            $this -> view -> assignMultiple([
+            $view = $this -> createModuleView();
+            $view -> assignMultiple([
                 'account' => $account,
             ]);
-            return $this -> htmlResponse();
+            return $view -> renderResponse('Synchronization/Account');
         }
         try {
             $amount = $this -> synchronizationUtility -> account($account);

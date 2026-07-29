@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-	<file target-language="en" datatype="plaintext" original="messages" date="2015-06-18T15:36:05Z" product-name="fpsocial" source-language="en">
+	<file datatype="plaintext" original="messages" date="2015-06-18T15:36:05Z" product-name="fpsocial" source-language="en">
 		<header />
 		<body>
 			<!-- Access -->
@@ -223,6 +223,12 @@
 			<trans-unit id="tx_fpsocial_domain_model_picture.filereference">
 				<source>Image</source>
 			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_picture.hidden">
+				<source>Hide in the frontend</source>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_picture.hidden.option">
+				<source>Do not display this image in the frontend</source>
+			</trans-unit>
 
 			<!-- Post Link -->
 			<trans-unit id="tx_fpsocial_domain_model_postlink">
@@ -236,6 +242,9 @@
 			</trans-unit>
 			<trans-unit id="tx_fpsocial_domain_model_postlink.hidden">
 				<source>Hide in the frontend</source>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_postlink.hidden.option">
+				<source>Do not display this post in the frontend</source>
 			</trans-unit>
 
 			<!-- Mention -->

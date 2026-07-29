@@ -45,7 +45,7 @@ class AccountController extends AbstractController
         $accounts = $this -> accountRepository -> findAccountsByQuery($query);
         $sortedAccounts = $this -> accountRepository -> sortAccoutsByNetwork($accounts);
 
-        $view = $this -> moduleTemplateFactory -> create($this -> request);
+        $view = $this -> createModuleView();
         $view -> assignMultiple([
             'sortedAccounts' => $sortedAccounts,
             'query' => $_SESSION['fp_social']['query'],
@@ -61,7 +61,7 @@ class AccountController extends AbstractController
      */
     public function showAction(Account $account, int $page = 1): ResponseInterface
     {
-        $posts = $this -> postLinkRepository -> findByAccount($account);
+        $posts = $this -> postLinkRepository -> findBy(["account" => $account]);
         $paginator = new QueryResultPaginator($posts, $page, 10);
         $pagination = new SimplePagination($paginator);
 
@@ -73,7 +73,7 @@ class AccountController extends AbstractController
             ],
         ]);
 
-        $view = $this -> moduleTemplateFactory -> create($this -> request);
+        $view = $this -> createModuleView();
         $view -> assignMultiple([
             'account' => $account,
             'posts' => $paginator -> getPaginatedItems(),

@@ -9,6 +9,12 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
 
+  # backend ajax routes
+  # Der RouteDispatcher holt das Ziel nur dann aus dem Container, wenn der Service
+  # public ist - sonst faellt er auf GeneralUtility::makeInstance() ohne DI zurueck.
+  Fixpunkt\FpSocial\Controller\AjaxController:
+    public: true
+
   # console commands
 
   Fixpunkt\FpSocial\Command\Synchronize:

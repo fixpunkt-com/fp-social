@@ -1,7 +1,7 @@
 <div class="carousel-caption" style="margin-bottom: 10px;">
     <f:if condition="{post.selectedOrFirstPicture.uid} == {picture.uid}">
         <f:then>
-            Derzeit ausgewähltes Vorschaubild
+            <span class="badge bg-success p-2">Derzeit ausgewähltes Vorschaubild</span>
         </f:then>
         <f:else>
             <f:form action="update" controller="Post" arguments="{postLink : postLink}" object="{post}" objectName="post">

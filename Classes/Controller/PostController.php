@@ -54,7 +54,7 @@ class PostController extends AbstractController
             ],
         ]);
 
-        $view = $this -> moduleTemplateFactory -> create($this -> request);
+        $view = $this -> createModuleView();
         $view -> assignMultiple([
             'search' => $search,
             'accounts' => $this -> accountRepository -> findAll(),
