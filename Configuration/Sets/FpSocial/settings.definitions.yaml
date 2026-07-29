@@ -1,0 +1,66 @@
+categories:
+  fpSocial:
+    label: 'Social Wall'
+  fpSocial.frontend:
+    label: 'Frontend'
+    parent: fpSocial
+  fpSocial.backend:
+    label: 'Backend-Modul'
+    parent: fpSocial
+
+settings:
+  plugin.tx_fpsocial.view.templateRootPath:
+    label: 'Template-Pfad (Frontend)'
+    description: 'Eigener Pfad für Templates, überschreibt die mitgelieferten Templates.'
+    type: string
+    default: 'EXT:fp_social/Resources/Private/Frontend/Templates/'
+    category: fpSocial.frontend
+  plugin.tx_fpsocial.view.partialRootPath:
+    label: 'Partial-Pfad (Frontend)'
+    description: 'Eigener Pfad für Partials, überschreibt die mitgelieferten Partials.'
+    type: string
+    default: 'EXT:fp_social/Resources/Private/Frontend/Partials/'
+    category: fpSocial.frontend
+  plugin.tx_fpsocial.view.layoutRootPath:
+    label: 'Layout-Pfad (Frontend)'
+    description: 'Eigener Pfad für Layouts, überschreibt die mitgelieferten Layouts.'
+    type: string
+    default: 'EXT:fp_social/Resources/Private/Frontend/Layouts/'
+    category: fpSocial.frontend
+  plugin.tx_fpsocial.persistence.storagePid:
+    label: 'Speicherordner (Frontend)'
+    description: 'Standard-Speicherordner (PID) für die Datensätze der Social Wall.'
+    type: string
+    default: ''
+    category: fpSocial.frontend
+  plugin.tx_fpsocial.settings.ajaxPage:
+    label: 'Ajax-Seitentyp (typeNum)'
+    description: 'typeNum der PAGE, die das Nachladen weiterer Beiträge per Ajax ausliefert.'
+    type: int
+    default: 1729369341
+    category: fpSocial.frontend
+
+  module.tx_fpsocial.view.templateRootPath:
+    label: 'Template-Pfad (Backend)'
+    description: 'Eigener Pfad für Templates des Backend-Moduls.'
+    type: string
+    default: 'EXT:fp_social/Resources/Private/Backend/Templates/'
+    category: fpSocial.backend
+  module.tx_fpsocial.view.partialRootPath:
+    label: 'Partial-Pfad (Backend)'
+    description: 'Eigener Pfad für Partials des Backend-Moduls.'
+    type: string
+    default: 'EXT:fp_social/Resources/Private/Backend/Partials/'
+    category: fpSocial.backend
+  module.tx_fpsocial.view.layoutRootPath:
+    label: 'Layout-Pfad (Backend)'
+    description: 'Eigener Pfad für Layouts des Backend-Moduls.'
+    type: string
+    default: 'EXT:fp_social/Resources/Private/Backend/Layouts/'
+    category: fpSocial.backend
+  module.tx_fpsocial.persistence.storagePid:
+    label: 'Speicherordner (Backend)'
+    description: 'Standard-Speicherordner (PID) für die Datensätze im Backend-Modul.'
+    type: string
+    default: ''
+    category: fpSocial.backend

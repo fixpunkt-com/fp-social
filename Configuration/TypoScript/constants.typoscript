@@ -1,3 +1,6 @@
+# Constants ausschließlich für die Legacy-Einbindung (Static-Include über sys_template).
+# Beim Set "fixpunkt/fp-social" kommen dieselben Werte aus der settings.definitions.yaml,
+# deshalb wird diese Datei bewusst NICHT ins Set importiert.
 plugin.tx_fpsocial {
 	view {
 		# cat=plugin.tx_fpsocial/file; type=string; label=Path to template root (FE)
