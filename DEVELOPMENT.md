@@ -40,9 +40,9 @@ Level 5 über `Classes/`, TYPO3-Regeln via `saschaegerer/phpstan-typo3`.
 # gegen TYPO3 14.3 (Standard-Toolchain, phpstan.neon wird automatisch gefunden):
 ddev exec ".build/vendor/bin/phpstan analyse"
 
-# gegen TYPO3 13.4 (niedrigste unterstützte Version):
+# gegen TYPO3 13.4:
 ddev exec "cd .build-v13 && composer install"   # einmalig
-ddev exec ".build-v1/vendor/bin/phpstan analyse"
+ddev exec ".build-v13/vendor/bin/phpstan analyse -c .build-v13/phpstan.neon"
 
 # gegen TYPO3 12.4 (niedrigste unterstützte Version):
 ddev exec "cd .build-v12 && composer install"   # einmalig
@@ -52,7 +52,7 @@ ddev exec ".build-v12/vendor/bin/phpstan analyse -c .build-v12/phpstan.neon"
 ## Continuous Integration
 
 `.github/workflows/ci.yml` fährt bei Push/Pull-Request PHPStan (Matrix
-TYPO3 12.4 + 13.4 + 14.3) sowie php-cs-fixer und nutzt dafür dieselben `.build`-/ `.build-12`-/
+TYPO3 12.4 + 13.4 + 14.3) sowie php-cs-fixer und nutzt dafür dieselben `.build`-/ `.build-v12`-/
 `.build-v13`-Toolchains.
 
 ## Tooling aktualisieren

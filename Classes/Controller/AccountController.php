@@ -61,7 +61,7 @@ class AccountController extends AbstractController
      */
     public function showAction(Account $account, int $page = 1): ResponseInterface
     {
-        $posts = $this -> postLinkRepository -> findBy(["account" => $account]);
+        $posts = $this -> postLinkRepository -> findBy(['account' => $account]);
         $paginator = new QueryResultPaginator($posts, $page, 10);
         $pagination = new SimplePagination($paginator);
 

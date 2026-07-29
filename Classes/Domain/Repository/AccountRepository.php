@@ -10,6 +10,9 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
+/**
+ * @extends Repository<\Fixpunkt\FpSocial\Domain\Model\Account>
+ */
 class AccountRepository extends Repository
 {
     // Order by BE sorting
