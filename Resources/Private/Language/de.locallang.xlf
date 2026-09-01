@@ -62,6 +62,56 @@
 				<source>Posts</source>
 				<target>Posts</target>
 			</trans-unit>
+
+            <!-- Account picker -->
+			<trans-unit id="tx_fpsocial_domain_model_account.account_picker">
+				<source>Automatic configuration</source>
+				<target>Automatische Konfiguration</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.button">
+				<source>Configure account automatically</source>
+				<target>Account automatisch konfigurieren</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.description">
+				<source>Loads the channels that are connected to the selected access data on the SocialServer and fills in the fields below.</source>
+				<target>Lädt die Kanäle, die mit den gewählten Zugangsdaten auf dem SocialServer verbunden sind, und trägt die Felder unten ein.</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.modal.title">
+				<source>Available channels</source>
+				<target>Verfügbare Kanäle</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.modal.close">
+				<source>Close</source>
+				<target>Schließen</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.noAccess">
+				<source>Please select the access data first.</source>
+				<target>Bitte zuerst die Zugangsdaten auswählen.</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.noChannels">
+				<source>No channels are available for this access data.</source>
+				<target>Zu diesen Zugangsdaten sind keine Kanäle verfügbar.</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.loading">
+				<source>Loading channels…</source>
+				<target>Kanäle werden geladen…</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.expired">
+				<source>This access has expired and has to be renewed on the Social Server.</source>
+				<target>Dieser Zugang ist abgelaufen und muss auf dem Social Server erneuert werden.</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.expires">
+				<source>Expires on</source>
+				<target>Läuft ab am</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.applied">
+				<source>Channel and label have been filled in.</source>
+				<target>Kanal und Label wurden eingetragen.</target>
+			</trans-unit>
+			<trans-unit id="accountPicker.switchesNetwork">
+				<source>Saves the record and switches the network to</source>
+				<target>Speichert den Datensatz und stellt das Netzwerk um auf</target>
+			</trans-unit>
 			<trans-unit id="tx_fpsocial_domain_model_account.wp_url">
 				<source>URL</source>
 				<target>URL</target>

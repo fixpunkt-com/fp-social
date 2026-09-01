@@ -7,6 +7,7 @@ return [
         'subclasses' => [
             \Fixpunkt\FpSocial\Domain\Model\Account\Facebook::class => \Fixpunkt\FpSocial\Domain\Model\Account\Facebook::class,
             \Fixpunkt\FpSocial\Domain\Model\Account\Instagram::class => \Fixpunkt\FpSocial\Domain\Model\Account\Instagram::class,
+            \Fixpunkt\FpSocial\Domain\Model\Account\InstagramLogin::class => \Fixpunkt\FpSocial\Domain\Model\Account\InstagramLogin::class,
             \Fixpunkt\FpSocial\Domain\Model\Account\LinkedIn::class => \Fixpunkt\FpSocial\Domain\Model\Account\LinkedIn::class,
             \Fixpunkt\FpSocial\Domain\Model\Account\Wordpress::class => \Fixpunkt\FpSocial\Domain\Model\Account\Wordpress::class,
             \Fixpunkt\FpSocial\Domain\Model\Account\Youtube::class => \Fixpunkt\FpSocial\Domain\Model\Account\Youtube::class,
@@ -22,6 +23,10 @@ return [
     \Fixpunkt\FpSocial\Domain\Model\Account\Instagram::class => [
         'tableName' => 'tx_fpsocial_domain_model_account',
         'recordType' => \Fixpunkt\FpSocial\Domain\Model\Account\Instagram::class,
+    ],
+    \Fixpunkt\FpSocial\Domain\Model\Account\InstagramLogin::class => [
+        'tableName' => 'tx_fpsocial_domain_model_account',
+        'recordType' => \Fixpunkt\FpSocial\Domain\Model\Account\InstagramLogin::class,
     ],
     \Fixpunkt\FpSocial\Domain\Model\Account\LinkedIn::class => [
         'tableName' => 'tx_fpsocial_domain_model_account',

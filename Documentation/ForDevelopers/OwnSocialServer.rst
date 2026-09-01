@@ -231,6 +231,61 @@ Reads a single Instagram post.
 
 **Response:** Single post (``SocialServerPostResponse``).
 
+Instagram (direct login)
+------------------------
+
+Used for Instagram accounts that are connected through the direct Instagram
+login instead of a Facebook page. Apart from the missing hashtag search, the
+endpoints match those of `Instagram`_.
+
+``networks/instagramlogin/posts``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Reads the posts of the connected profile.
+
+``POST`` request to ``networks/instagramlogin/posts``. The body is transmitted
+as ``form_params`` (``application/x-www-form-urlencoded``):
+
+..  code-block:: json
+
+    {
+        "version": 2,
+        "auth": {
+            "username": "Your username",
+            "accesstoken": "Your access token"
+        },
+        "pageId": "Instagram account ID"
+    }
+
+*   ``pageId`` -- ID of the Instagram account from which the posts are read.
+    Corresponds to the channel stored in the account.
+
+**Response:** List of posts (``SocialServerPostsResponse``).
+
+``networks/instagramlogin/post``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Reads a single post.
+
+``POST`` request to ``networks/instagramlogin/post``. The body is transmitted
+as ``form_params`` (``application/x-www-form-urlencoded``):
+
+..  code-block:: json
+
+    {
+        "version": 2,
+        "auth": {
+            "username": "Your username",
+            "accesstoken": "Your access token"
+        },
+        "postId": "Post ID"
+    }
+
+*   ``postId`` -- ID of the post. Corresponds to the ID under which the post was
+    stored when it was read.
+
+**Response:** Single post (``SocialServerPostResponse``).
+
 LinkedIn
 --------
 
@@ -517,6 +572,73 @@ Reads a single Bluesky post.
     stored when it was read.
 
 **Response:** Single post (``SocialServerPostResponse``).
+
+Accounts
+--------
+
+``accounts``
+~~~~~~~~~~~~
+
+Lists all accesses that the user has connected on the server, grouped by
+network. The backend uses this endpoint for the channel selection next to
+:guilabel:`The Channel`; it is optional -- without it the channel simply has to
+be entered by hand.
+
+``POST`` request to ``accounts``. The body is transmitted as ``form_params``
+(``application/x-www-form-urlencoded``) and needs no arguments beyond the ones
+described under `Authentication`_:
+
+..  code-block:: json
+
+    {
+        "version": 2,
+        "auth": {
+            "username": "Your username",
+            "accesstoken": "Your access token"
+        }
+    }
+
+**Response:** List of accesses (``SocialServerAccountsResponse``). The
+``accounts`` key is an object whose keys name the network and whose values are
+lists of accesses:
+
+..  code-block:: json
+
+    {
+        "type": "Fixpunkt\\FpSocialBridge\\v2\\Response\\SocialServerAccountsResponse",
+        "version": 2,
+        "accounts": {
+            "Fixpunkt\\FpSocialServer\\Networks\\Facebook\\Connector": [
+                {
+                    "uid": 12,
+                    "network": "Fixpunkt\\FpSocialServer\\Networks\\Facebook\\Connector",
+                    "networkKey": "facebook",
+                    "networkName": "Facebook",
+                    "displayName": "Example Organization",
+                    "username": "100000000000001",
+                    "email": "office@example.com",
+                    "expires": null,
+                    "expired": false,
+                    "channels": [
+                        {"id": "200000000000001", "name": "Example Page"}
+                    ]
+                }
+            ]
+        }
+    }
+
+*   ``networkKey`` -- short form of the network. The extension maps
+    ``facebook``, ``instagram``, ``instagramlogin`` and ``linkedin`` to its own
+    account types; accesses of any other network are ignored.
+*   ``channels[].id`` -- the value that is written into the channel of an
+    account, and that is expected back as ``pageId`` by the endpoints above.
+*   ``channels[].name`` -- the value that is written into the label.
+*   ``expires`` -- expiry date of the access, or ``null`` for networks whose
+    access keys do not expire. ``expired`` says whether it has already passed.
+
+..  note::
+    Never return the access keys themselves here. The channels are meant for
+    display and for filling in the account, not for authentication.
 
 Error handling
 --------------

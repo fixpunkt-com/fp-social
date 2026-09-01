@@ -11,4 +11,8 @@ return [
         'path' => '/web/FpSocialManage/synchronize',
         'target' => \Fixpunkt\FpSocial\Controller\AjaxController::class . '::synchronizeAction',
     ],
+    'fpsocial_accounts' => [
+        'path' => '/web/FpSocialManage/accounts',
+        'target' => \Fixpunkt\FpSocial\Controller\AjaxController::class . '::accountsAction',
+    ],
 ];

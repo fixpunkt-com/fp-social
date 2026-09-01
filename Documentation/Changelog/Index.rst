@@ -7,6 +7,14 @@ Changelog
 Unreleased
 ==========
 
+*   Accounts can now be filled in from the SocialServer: at the top of the
+    :guilabel:`Setting` section the button :guilabel:`Configure account
+    automatically` offers all channels that are connected to the selected
+    credentials, and one click writes channel and label into the record. If the
+    chosen channel belongs to another network, the record is saved and the
+    network is switched along with it. See :ref:`access-and-accounts`.
+*   Added support for Instagram accounts that are connected through the direct
+    Instagram login instead of a Facebook page.
 *   Added compatibility with TYPO3 v14. The extension now supports TYPO3 v12.4,
     v13.4 and v14.4.
 *   For TYPO3 v13 and v14 the TypoScript can now be loaded via the site set

@@ -54,6 +54,10 @@ class Access extends AbstractEntity
                 return $this -> connect('networks/instagram/post', [
                     'postId' => $post -> getId(),
                 ]);
+            case Account\InstagramLogin::class:
+                return $this -> connect('networks/instagramlogin/post', [
+                    'postId' => $post -> getId(),
+                ]);
             case Account\LinkedIn::class:
                 return $this -> connect('networks/linkedin/post', [
                     'postId' => $post -> getId(),
@@ -86,6 +90,13 @@ class Access extends AbstractEntity
         switch (get_class($account)) {
             case Account\Facebook::class:
                 return $this -> connect('networks/facebook/posts', [
+                    'pageId' => $account -> getChannel(),
+                ]);
+            case Account\InstagramLogin::class:
+                // Bewusst vor Instagram: dessen switch faellt am Ende ohne break durch, dieser
+                // Zweig darf dabei nicht als Auffangbecken landen. Die Direktanmeldung kennt
+                // keine Hashtag-Suche, deshalb nur der Profil-Endpunkt.
+                return $this -> connect('networks/instagramlogin/posts', [
                     'pageId' => $account -> getChannel(),
                 ]);
             case Account\Instagram::class:
@@ -149,6 +160,16 @@ class Access extends AbstractEntity
     {
         // ToDo: Check if URI is correct.
         return $this -> connectWithFullUri($uri);
+    }
+
+    /**
+     * Liest alle Zugaenge ein, die dieses Konto beim Social Server verbunden hat.
+     * Die Antwort ist nach Netzwerk gruppiert (SocialServerAccountsResponse).
+     * @throws \Exception
+     */
+    public function getAccountsData(): SocialServerResponse
+    {
+        return $this -> connect('accounts');
     }
 
     /**

@@ -24,22 +24,25 @@ $tca = [
             'showitem' => 'access, network',
         ],
         'facebook' => [
-            'showitem' => 'label, channel',
+            'showitem' => 'account_picker, --linebreak--, label, channel',
         ],
         'linkedin' => [
-            'showitem' => 'li_mode, label, channel',
+            'showitem' => 'account_picker, --linebreak--, li_mode, label, channel',
         ],
         'bluesky' => [
-            'showitem' => 'channel',
+            'showitem' => 'account_picker, --linebreak--, channel',
         ],
         'instagram' => [
-            'showitem' => 'in_mode, label, channel, in_hashtag, in_hashtag_mode',
+            'showitem' => 'account_picker, --linebreak--, in_mode, label, channel, in_hashtag, in_hashtag_mode',
+        ],
+        'instagramlogin' => [
+            'showitem' => 'account_picker, --linebreak--, label, channel',
         ],
         'wordpress' => [
             'showitem' => 'label, wp_url, wp_mode, wp_tag, wp_author',
         ],
         'youtube' => [
-            'showitem' => 'channel',
+            'showitem' => 'account_picker, --linebreak--, channel',
         ],
         'synchronization' => [
             'showitem' => 'synchronize, approve, synchronization_interval, --linebreak--, last_synchronization, last_successful_synchronization, --linebreak--, synchronization_error',
@@ -63,6 +66,15 @@ $tca = [
 		    posts
 		    ',
             'label' => Account\Instagram::DESCRIPTION,
+        ],
+        Account\InstagramLogin::class => [
+            'showitem' => '
+		    --palette--;LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_account.palettes.network;network,
+		    --palette--;LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_account.palettes.settings;instagramlogin,
+		    --palette--;LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_account.palettes.synchronization;synchronization,
+		    posts
+		    ',
+            'label' => Account\InstagramLogin::DESCRIPTION,
         ],
         Account\Wordpress::class => [
             'showitem' => '
@@ -119,6 +131,10 @@ $tca = [
                         'value' => Account\Instagram::class,
                     ],
                     [
+                        'label' => Account\InstagramLogin::DESCRIPTION,
+                        'value' => Account\InstagramLogin::class,
+                    ],
+                    [
                         'label' => 'Wordpress',
                         'value' => Account\Wordpress::class,
                     ],
@@ -164,6 +180,16 @@ $tca = [
                 'size' => 30,
                 'eval' => 'trim',
                 'required' => true,
+            ],
+        ],
+        // Speichert nichts und hat deshalb auch keine Spalte in ext_tables.sql - das Feld ist
+        // nur der Aufhaenger fuer den Button (Classes/Form/Element/AccountPickerElement.php).
+        'account_picker' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_account.account_picker',
+            'config' => [
+                'type' => 'user',
+                'renderType' => 'fpSocialAccountPicker',
             ],
         ],
         'posts' => [

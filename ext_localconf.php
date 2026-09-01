@@ -49,3 +49,12 @@ ExtensionUtility::configurePlugin(
     'setup',
     "@import 'EXT:fp_social/Configuration/TypoScript/notloaded/setup.typoscript'"
 );
+
+// Button am Kopf der Einstellungs-Palette im TCA-Formular eines Accounts, der die beim
+// Social Server verbundenen Kanaele anbietet.
+// Siehe Classes/Form/Element/AccountPickerElement.php.
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1756900000] = [
+    'nodeName' => 'fpSocialAccountPicker',
+    'priority' => 40,
+    'class' => \Fixpunkt\FpSocial\Form\Element\AccountPickerElement::class,
+];

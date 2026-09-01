@@ -13,6 +13,21 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 abstract class Account extends AbstractEntity
 {
+    /**
+     * Kurzform des Netzwerks beim Social Server (dort NetworkRegistry::networks) => Modellklasse.
+     *
+     * Wordpress, Youtube und Bluesky fehlen hier bewusst: fuer sie kennt der Social Server keine
+     * Zugaenge, sie werden ueber Url, Kanal-Id oder Handle konfiguriert. Kommt beim Abruf von
+     * /accounts ein unbekannter Schluessel an, wird der Zugang uebersprungen statt geraten.
+     * @var array<string, class-string<Account>>
+     */
+    public const SOCIAL_SERVER_NETWORKS = [
+        'facebook' => Account\Facebook::class,
+        'instagram' => Account\Instagram::class,
+        'instagramlogin' => Account\InstagramLogin::class,
+        'linkedin' => Account\LinkedIn::class,
+    ];
+
     /** @var bool */
     protected bool $approve = true;
     /** @var string  */

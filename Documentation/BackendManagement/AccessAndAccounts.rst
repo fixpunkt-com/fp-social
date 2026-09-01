@@ -76,6 +76,21 @@ To do so, proceed as follows:
         *   **Additional fields:** Depending on the selected network, further
             details must be provided. Click the label to get more guidance.
 
+    ..  tip::
+        You do not have to look up the channel by hand. Once the credentials are
+        selected, the button :guilabel:`Configure account automatically` at the
+        top of the :guilabel:`Setting` section lists every channel that is
+        connected to those credentials on the SocialServer, grouped by network.
+        Clicking one fills in :guilabel:`The Channel` and :guilabel:`Label`.
+
+        The list contains the channels of all networks. If you pick a channel
+        that belongs to a different network than the one currently selected, the
+        record is saved and reloaded so that the network can be switched along
+        with it.
+
+        The button is not available for WordPress accounts -- they are
+        configured through a URL instead of a channel.
+
     *   **Synchronization:**
 
         *   **Synchronize this account automatically:** If this option is

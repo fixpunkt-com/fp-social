@@ -48,6 +48,44 @@
 			<trans-unit id="tx_fpsocial_domain_model_account.posts">
 				<source>Posts</source>
 			</trans-unit>
+
+            <!-- Account picker -->
+			<trans-unit id="tx_fpsocial_domain_model_account.account_picker">
+				<source>Automatic configuration</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.button">
+				<source>Configure account automatically</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.description">
+				<source>Loads the channels that are connected to the selected access data on the SocialServer and fills in the fields below.</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.modal.title">
+				<source>Available channels</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.modal.close">
+				<source>Close</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.noAccess">
+				<source>Please select the access data first.</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.noChannels">
+				<source>No channels are available for this access data.</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.loading">
+				<source>Loading channels…</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.expired">
+				<source>This access has expired and has to be renewed on the Social Server.</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.expires">
+				<source>Expires on</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.applied">
+				<source>Channel and label have been filled in.</source>
+			</trans-unit>
+			<trans-unit id="accountPicker.switchesNetwork">
+				<source>Saves the record and switches the network to</source>
+			</trans-unit>
 			<trans-unit id="tx_fpsocial_domain_model_account.wp_url">
 				<source>URL</source>
 			</trans-unit>
