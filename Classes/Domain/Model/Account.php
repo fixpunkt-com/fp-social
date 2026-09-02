@@ -46,6 +46,8 @@ abstract class Account extends AbstractEntity
     protected bool $synchronize = true;
     /** @var \DateTime|null */
     protected ?\DateTime $lastSuccessfulSynchronization = null;
+    /** @var \DateTime|null */
+    protected ?\DateTime $synchronizationRetryAfter = null;
     /** @var string  */
     protected string $network = '';
 
@@ -110,6 +112,24 @@ abstract class Account extends AbstractEntity
         $this->lastSuccessfulSynchronization = $lastSuccessfulSynchronization;
         $this -> setLastSynchronization($lastSuccessfulSynchronization);
         $this -> setSynchronizationError('');
+        $this -> setSynchronizationRetryAfter(null);
+    }
+
+    /**
+     * Zeitpunkt, ab dem nach einer Drosselung des Social Servers wieder synchronisiert werden
+     * darf. Solange er in der Zukunft liegt, ueberspringt das Kommando dieses Konto.
+     * @return \DateTime|null
+     */
+    public function getSynchronizationRetryAfter(): ?\DateTime
+    {
+        return $this->synchronizationRetryAfter;
+    }
+    /**
+     * @param \DateTime|null $synchronizationRetryAfter
+     */
+    public function setSynchronizationRetryAfter(?\DateTime $synchronizationRetryAfter): void
+    {
+        $this->synchronizationRetryAfter = $synchronizationRetryAfter;
     }
     /**
      * Gibt zurück ob die letzte Synchronisation erfolgreich war.

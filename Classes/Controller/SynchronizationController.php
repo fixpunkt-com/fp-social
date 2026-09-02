@@ -11,6 +11,7 @@ use Fixpunkt\FpSocial\Domain\Repository\PostRepository;
 use Fixpunkt\FpSocial\Utilities\SynchronizationUtility;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use Fixpunkt\FpSocial\Exception\RateLimitedException;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
@@ -94,6 +95,14 @@ class SynchronizationController extends AbstractController
                     ContextualFeedbackSeverity::WARNING
                 );
             }
+        } catch (RateLimitedException $e) {
+            // Kein Fehler: der Social Server drosselt gerade. Die Meldung nennt bereits den
+            // Zeitpunkt, ab dem es wieder geht.
+            $this->addFlashMessage(
+                $e->getMessage(),
+                'Der Account wurde nicht eingelesen:',
+                ContextualFeedbackSeverity::WARNING
+            );
         } catch (\Exception $e) {
             $this->addFlashMessage(
                 $e->getCode() . ': ' . $e->getMessage(),
@@ -128,6 +137,12 @@ class SynchronizationController extends AbstractController
                     ContextualFeedbackSeverity::WARNING
                 );
             }
+        } catch (RateLimitedException $e) {
+            $this->addFlashMessage(
+                $e->getMessage(),
+                'Der Post wurde nicht eingelesen:',
+                ContextualFeedbackSeverity::WARNING
+            );
         } catch (\Exception $e) {
             $this->addFlashMessage(
                 $e->getCode() . ': ' . $e->getMessage(),

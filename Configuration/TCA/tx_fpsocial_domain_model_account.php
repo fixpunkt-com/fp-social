@@ -45,7 +45,7 @@ $tca = [
             'showitem' => 'account_picker, --linebreak--, channel',
         ],
         'synchronization' => [
-            'showitem' => 'synchronize, approve, synchronization_interval, --linebreak--, last_synchronization, last_successful_synchronization, --linebreak--, synchronization_error',
+            'showitem' => 'synchronize, approve, synchronization_interval, --linebreak--, last_synchronization, last_successful_synchronization, synchronization_retry_after, --linebreak--, synchronization_error',
         ],
     ],
     'types' => [
@@ -385,6 +385,16 @@ $tca = [
         'last_successful_synchronization' => [
             'exclude' => true,
             'label' => 'LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_account.last_successful_synchronization',
+            'config' => [
+                'type' => 'datetime',
+                'dbType' => 'datetime',
+                'nullable' => true,
+            ],
+        ],
+        'synchronization_retry_after' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_account.synchronization_retry_after',
+            'description' => 'LLL:EXT:fp_social/Resources/Private/Language/locallang.xlf:tx_fpsocial_domain_model_account.synchronization_retry_after.description',
             'config' => [
                 'type' => 'datetime',
                 'dbType' => 'datetime',

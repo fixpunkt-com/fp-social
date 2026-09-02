@@ -9,6 +9,7 @@ use Fixpunkt\FpSocial\Domain\Repository\AccessRepository;
 use Fixpunkt\FpSocial\Domain\Repository\AccountRepository;
 use Fixpunkt\FpSocial\Domain\Repository\PostRepository;
 use Fixpunkt\FpSocial\Events\AccountUpdatedEvent;
+use Fixpunkt\FpSocial\Exception\RateLimitedException;
 // Der Name Account ist hier schon vom eigenen Model belegt.
 use Fixpunkt\FpSocialBridge\v2\Data\Account as SocialServerAccount;
 use Fixpunkt\FpSocialBridge\v2\Data\Channel;
@@ -16,6 +17,7 @@ use Fixpunkt\FpSocialBridge\v2\Data\Post;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerAccountsResponse;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerErrorResponse;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerPostsResponse;
+use Fixpunkt\FpSocialBridge\v2\Response\SocialServerRateLimitResponse;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -80,6 +82,12 @@ class AjaxController
                 ? $account -> readPostsFromUri($uri)
                 : $account -> getAccess() -> getPostsData($account);
 
+            // Vor der Fehlerpruefung: SocialServerRateLimitResponse erbt von
+            // SocialServerErrorResponse und darf nicht als gewoehnlicher Fehler enden.
+            if ($response instanceof SocialServerRateLimitResponse) {
+                throw RateLimitedException::fromResponse($response);
+            }
+
             if (is_a($response, SocialServerErrorResponse::class)) {
                 throw new \Exception($response -> getMessage(), $response -> getCode());
             }
@@ -102,6 +110,15 @@ class AjaxController
 
             // Frontend-Cache leeren, falls sich etwas geändert hat
             GeneralUtility::makeInstance(AccountUpdatedEvent::class, $account);
+        } catch (RateLimitedException $e) {
+            // Kein Fehlschlag, sondern eine Pause. Bewusst ohne setLastSynchronization(), damit
+            // das Konto nicht um ein ganzes Intervall nach hinten rutscht.
+            $account -> setSynchronizationRetryAfter(\DateTime::createFromImmutable($e -> getRetryAfter()));
+            $account -> setSynchronizationError($e -> getMessage());
+            $this -> accountRepository -> update($account);
+            $this -> persistenceManager -> persistAll();
+
+            return $this -> createRateLimitResponse($e, 'Problem reading posts: ');
         } catch (\Throwable $e) {
             $account -> setSynchronizationError($e -> getMessage());
             $account -> setLastSynchronization(new \DateTime());
@@ -149,6 +166,10 @@ class AjaxController
         try {
             $response = $access -> getAccountsData();
 
+            if ($response instanceof SocialServerRateLimitResponse) {
+                throw RateLimitedException::fromResponse($response);
+            }
+
             if (is_a($response, SocialServerErrorResponse::class)) {
                 throw new \Exception($response -> getMessage(), $response -> getCode());
             }
@@ -158,6 +179,8 @@ class AjaxController
                     1756900003
                 );
             }
+        } catch (RateLimitedException $e) {
+            return $this -> createRateLimitResponse($e, 'Problem reading accounts: ');
         } catch (\Throwable $e) {
             return $this -> createResponse([
                 'errorCode' => $e -> getCode(),
@@ -233,6 +256,28 @@ class AjaxController
     private function getAccount(int $accountUid): ?Account
     {
         return $this -> accountRepository -> findByIdentifier($accountUid);
+    }
+
+    /**
+     * Antwort auf eine Drosselung des Social Servers.
+     *
+     * "errorCode" und "errorMessage" bleiben erhalten, damit auch nicht angepasstes JavaScript
+     * etwas anzeigt; "rateLimited" und "retryAfterSeconds" erlauben es der
+     * Tiefensynchronisierung, die Kette nach der Wartezeit fortzusetzen statt abzubrechen.
+     *
+     * @param RateLimitedException $exception
+     * @param string $messagePrefix
+     * @return ResponseInterface
+     */
+    private function createRateLimitResponse(RateLimitedException $exception, string $messagePrefix = ''): ResponseInterface
+    {
+        return $this -> createResponse([
+            'errorCode' => $exception -> getCode(),
+            'errorMessage' => $messagePrefix . $exception -> getMessage(),
+            'rateLimited' => true,
+            'retryAfterSeconds' => $exception -> getRetryAfterSeconds(),
+            'retryAfter' => $exception -> getRetryAfter() -> getTimestamp(),
+        ], 429);
     }
 
     /**

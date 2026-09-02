@@ -224,6 +224,14 @@
 				<source>Date of the last successful synchronization</source>
 				<target>Datum der letzten erfolgreichen Synchronisation</target>
 			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.synchronization_retry_after">
+				<source>Synchronization postponed until</source>
+				<target>Synchronisation verschoben bis</target>
+			</trans-unit>
+			<trans-unit id="tx_fpsocial_domain_model_account.synchronization_retry_after.description">
+				<source>Set automatically when the social server has reached a request limit. Until this point in time the account is skipped by the synchronization. Clear the field to try again right away.</source>
+				<target>Wird automatisch gesetzt, wenn der Social Server ein Anfragelimit erreicht hat. Bis zu diesem Zeitpunkt überspringt die Synchronisation dieses Konto. Feld leeren, um es sofort erneut zu versuchen.</target>
+			</trans-unit>
 			<trans-unit id="tx_fpsocial_domain_model_account.synchronization_error">
 				<source>Error message during synchronization</source>
 				<target>Fehlermeldung bei Synchronisation</target>

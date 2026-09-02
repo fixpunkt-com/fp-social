@@ -10,7 +10,9 @@ use Fixpunkt\FpSocial\Domain\Repository\AccountRepository;
 use Fixpunkt\FpSocial\Domain\Repository\PostRepository;
 use Fixpunkt\FpSocial\Events\AccountUpdatedEvent;
 use Fixpunkt\FpSocial\Events\PostUpdatedEvent;
+use Fixpunkt\FpSocial\Exception\RateLimitedException;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerErrorResponse;
+use Fixpunkt\FpSocialBridge\v2\Response\SocialServerRateLimitResponse;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerPostResponse;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerPostsResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -42,6 +44,11 @@ class SynchronizationUtility
     {
         try {
             $response = $account -> getAccess() -> getPostsData($account);
+            // Vor der Fehlerpruefung: SocialServerRateLimitResponse erbt von
+            // SocialServerErrorResponse und darf nicht als gewoehnlicher Fehler enden.
+            if ($response instanceof SocialServerRateLimitResponse) {
+                throw RateLimitedException::fromResponse($response);
+            }
             if (is_a($response, SocialServerErrorResponse::class)) {
                 throw new \Exception($response -> getMessage(), $response -> getCode());
             }
@@ -61,6 +68,14 @@ class SynchronizationUtility
             $this -> accountRepository -> update($account);
 
             return count($response -> getPosts());
+        } catch (RateLimitedException $e) {
+            // Kein Fehler, nur zu frueh. Bewusst ohne setLastSynchronization(): das wuerde das
+            // Konto um ein ganzes Synchronisationsintervall nach hinten schieben, obwohl die
+            // Sperre meist nur Sekunden dauert. Stattdessen zaehlt der gemeldete Zeitpunkt.
+            $account -> setSynchronizationRetryAfter(\DateTime::createFromImmutable($e -> getRetryAfter()));
+            $account -> setSynchronizationError($e -> getMessage());
+            $this -> accountRepository -> update($account);
+            throw $e;
         } catch (\Throwable $e) {
             $account -> setSynchronizationError($e -> getMessage());
             $account -> setLastSynchronization(new \DateTime());
@@ -82,6 +97,11 @@ class SynchronizationUtility
     {
         try {
             $response = $account -> getAccess() -> getPostData($account, $post);
+            // Vor der Fehlerpruefung: SocialServerRateLimitResponse erbt von
+            // SocialServerErrorResponse und darf nicht als gewoehnlicher Fehler enden.
+            if ($response instanceof SocialServerRateLimitResponse) {
+                throw RateLimitedException::fromResponse($response);
+            }
             if (is_a($response, SocialServerErrorResponse::class)) {
                 throw new \Exception($response -> getMessage(), $response -> getCode());
             }

@@ -23,7 +23,7 @@
     "typo3/cms-fluid": "*",
     "typo3/cms-install": "*",
 
-	"fixpunkt/fp-social-bridge": "^1.4",
+	"fixpunkt/fp-social-bridge": "^1.5",
 
     "ext-json": "*",
     "ext-curl": "*",

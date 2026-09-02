@@ -32,6 +32,12 @@ The following tasks are available to you:
 
     *   ``days`` (required): Number of days after which posts are deleted.
 
+..  note::
+    If the social server has reached a request limit, ``fp_social:synchronize``
+    reports the affected account as ``Synchronization deferred`` and carries on
+    with the next one. The run does not fail, and the account is picked up again
+    once the block has passed. See :ref:`rate-limit`.
+
 Setting up a Task
 =================
 

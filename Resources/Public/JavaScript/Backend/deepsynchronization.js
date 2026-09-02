@@ -95,13 +95,37 @@ function readPosts(account, maxAmount, currentAmount, nextRequest) {
         .catch(async function(response) {
             let message = "";
             let code = "";
+            let resolved = null;
 
             if(typeof response.message !== "undefined") {
                 message = response.message;
             } else {
-                const resolved = await response.resolve();
+                resolved = await response.resolve();
                 message = resolved.errorMessage;
                 code = resolved.errorCode;
+            }
+
+            // Drosselung des Social Servers: nicht abbrechen, sondern die Sperre abwarten und
+            // die Kette an derselben Seite fortsetzen.
+            if (resolved !== null && resolved.rateLimited) {
+                // Eine Sekunde Zuschlag, weil der Server den Zeitpunkt abrundet.
+                const seconds = Number(resolved.retryAfterSeconds) + 1;
+
+                const waitingHtml = $($('#blueprints .waiting').html());
+                waitingHtml.find('.message').html(message);
+                waitingHtml.find('.seconds').html(seconds);
+
+                const waitingLi = $('#console li.current');
+                if (waitingLi.length) {
+                    waitingLi.html(waitingHtml).removeClass("current");
+                } else {
+                    $('#console ul').append($("<li>").html(waitingHtml));
+                }
+
+                window.setTimeout(function () {
+                    readPosts(account, maxAmount, currentAmount, nextRequest);
+                }, seconds * 1000);
+                return;
             }
 
             // Anzeige anpassen

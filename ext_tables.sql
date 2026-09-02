@@ -28,6 +28,7 @@ CREATE TABLE tx_fpsocial_domain_model_account (
     last_successful_synchronization datetime DEFAULT null,
     synchronization_error TEXT,
     synchronization_interval VARCHAR(255) DEFAULT '' NOT NULL,
+    synchronization_retry_after datetime DEFAULT null,
 
     access int(11) DEFAULT '0' NOT NULL,
     network varchar(255) DEFAULT '' NOT NULL,

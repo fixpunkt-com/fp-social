@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Fixpunkt\FpSocial\Command;
 
 use Fixpunkt\FpSocial\Domain\Model\Account;
+use Fixpunkt\FpSocial\Exception\RateLimitedException;
 use Fixpunkt\FpSocial\Utilities\SynchronizationUtility;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -69,6 +70,10 @@ class Synchronize extends Command
             try {
                 $this -> synchronizationUtility -> account($account);
                 $output->writeln(sprintf('<info>Synchronization completed!</info>'));
+            } catch (RateLimitedException $e) {
+                // Kein Fehlschlag: der Social Server drosselt gerade. Das Konto wird beim
+                // naechsten Lauf nach Ablauf der Sperre erneut versucht.
+                $output->writeln(sprintf('<comment>Synchronization deferred: %s</comment>', $e -> getMessage()));
             } catch (\Throwable $e) {
                 $output->writeln(sprintf('<error>Synchronization failed: %s</error>', $e -> getMessage()));
             }
@@ -89,7 +94,17 @@ class Synchronize extends Command
             -> select('*')
             -> from('tx_fpsocial_domain_model_account')
             -> where(
-                $queryBuilder ->  expr() -> eq('synchronize', 1)
+                $queryBuilder ->  expr() -> eq('synchronize', 1),
+                // Konten, die der Social Server gedrosselt hat, bleiben bis zum gemeldeten
+                // Zeitpunkt aussen vor - sonst laufen sie beim naechsten Lauf sofort wieder
+                // in dieselbe Sperre.
+                $queryBuilder -> expr() -> or(
+                    $queryBuilder -> expr() -> isNull('synchronization_retry_after'),
+                    $queryBuilder -> expr() -> lte(
+                        'synchronization_retry_after',
+                        $queryBuilder -> createNamedParameter((new \DateTime()) -> format('Y-m-d H:i:s'))
+                    )
+                )
             )
             -> executeQuery();
         $allAccounts = $result -> fetchAllAssociative();

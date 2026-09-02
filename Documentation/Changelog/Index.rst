@@ -7,6 +7,27 @@ Changelog
 Unreleased
 ==========
 
+*   The social server now limits how often its API may be called -- requests to
+    the same social media profile and the overall number of requests are each
+    capped per API user. Synchronization no longer treats a reached limit as a
+    failure: short blocks are waited out and the request is retried, longer ones
+    postpone the account to the next run. The new extension setting
+    :guilabel:`rateLimitWaitThreshold` decides where that boundary is, see
+    :ref:`rate-limit`.
+*   Accounts carry a new read-out field :guilabel:`Synchronization postponed
+    until`. As long as it lies in the future, the scheduler task skips the
+    account. Clear it to try again right away.
+*   The deep synchronization in the backend module now pauses and continues on
+    its own when a limit is reached instead of stopping with an error.
+*   Requests to the social server now use a connect timeout of 10 and a read
+    timeout of 30 seconds. Previously a hanging server could block a
+    synchronization run indefinitely.
+*   Requires ``fixpunkt/fp-social-bridge`` 1.5 or newer.
+*   An answer of the social server that cannot be used is reported with a
+    message that names the cause: a mismatching protocol version and an unknown
+    response type each state what does not fit and what helps, instead of the
+    technical message of ``fp_social_bridge``. See :ref:`unusable-answer`.
+
 *   Accounts can now be filled in from the SocialServer: at the top of the
     :guilabel:`Setting` section the button :guilabel:`Configure account
     automatically` offers all channels that are connected to the selected

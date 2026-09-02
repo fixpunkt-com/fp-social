@@ -1,2 +1,4 @@
 # cat=basic; type=string; label=API-Url: Die URL der API-Anbindung
 apiUrl = https://social.fixpunkt.com/api/
+# cat=basic; type=int+; label=Rate Limit: Sperren des Social Servers bis zu dieser Dauer in Sekunden werden abgewartet und die Anfrage wiederholt, längere verschieben das Konto auf den nächsten Lauf (0 = nie warten)
+rateLimitWaitThreshold = 10
