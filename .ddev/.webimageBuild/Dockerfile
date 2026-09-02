@@ -5,7 +5,6 @@ ARG BASE_IMAGE="scratch"
 ### DDEV-injected base Dockerfile contents
 FROM $BASE_IMAGE
 SHELL ["/bin/bash", "-c"]
-
 ARG TARGETPLATFORM
 ARG TARGETARCH
 ARG TARGETOS
@@ -15,11 +14,16 @@ ARG gid
 ARG DDEV_PHP_VERSION
 ARG DDEV_DATABASE
 RUN getent group tty || groupadd tty
+# Group 0 (root) is added here so this user can read/write directories that are
+# baked group-writable-by-root in the base image (e.g. /usr/local/n, /var/log,
+# see containers/ddev-webserver/Dockerfile) without a per-project chgrp/chmod
+# of those directories. See the note near the chmod -R below, and
+# https://developers.redhat.com/blog/2020/10/26/adapting-docker-and-kubernetes-containers-to-run-on-red-hat-openshift-container-platform
 RUN (groupadd --gid "$gid" "$username" || groupadd "$username" || true) && \
-    (useradd -G tty -l -m -s "/bin/bash" --gid "$username" --comment '' --uid "$uid" "$username" || \
-    useradd -G tty -l -m -s "/bin/bash" --gid "$username" --comment '' "$username" || \
-    useradd -G tty -l -m -s "/bin/bash" --gid "$gid" --comment '' "$username" || \
-    useradd -G tty -l -m -s "/bin/bash" --comment '' "$username")
+    (useradd -G tty,0 -l -m -s "/bin/bash" --gid "$username" --comment '' --uid "$uid" "$username" || \
+    useradd -G tty,0 -l -m -s "/bin/bash" --gid "$username" --comment '' "$username" || \
+    useradd -G tty,0 -l -m -s "/bin/bash" --gid "$gid" --comment '' "$username" || \
+    useradd -G tty,0 -l -m -s "/bin/bash" --comment '' "$username")
 
 ### DDEV-injected extra content
 
@@ -40,8 +44,8 @@ RUN mkdir -p /run/php /var/run/nginx /var/run/supervisor /var/run/apache2 /var/l
     touch /var/log/nginx/error.log /var/log/nginx/access.log /var/log/php-fpm.log /var/log/supervisord.log && \
     chmod ugo+rw /var/log/nginx/error.log /var/log/nginx/access.log /var/log/php-fpm.log /var/log/supervisord.log && \
     chmod ugo+rwX /var/log/nginx /var/log/apache2 && \
-    chgrp -R "$gid" /etc/alternatives /var/lib/dpkg/alternatives /usr/local/n && \
-    chmod -R g+rwX,o-w /etc/alternatives /var/lib/dpkg/alternatives /usr/local/n && \
+    chgrp -R "$gid" /etc/alternatives /var/lib/dpkg/alternatives && \
+    chmod -R g+rwX,o-w /etc/alternatives /var/lib/dpkg/alternatives && \
     chmod -f ugo+rx /usr/local/bin /usr/local/bin/* && \
     chgrp "$gid" /usr/local/bin/composer && chmod g+rwx,o-w /usr/local/bin/composer && \
     mkdir -p /tmp/xhprof && chmod -R ugo+w /etc/php /var/lib/php /tmp/xhprof

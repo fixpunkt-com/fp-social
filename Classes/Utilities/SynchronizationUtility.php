@@ -12,9 +12,9 @@ use Fixpunkt\FpSocial\Events\AccountUpdatedEvent;
 use Fixpunkt\FpSocial\Events\PostUpdatedEvent;
 use Fixpunkt\FpSocial\Exception\RateLimitedException;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerErrorResponse;
-use Fixpunkt\FpSocialBridge\v2\Response\SocialServerRateLimitResponse;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerPostResponse;
 use Fixpunkt\FpSocialBridge\v2\Response\SocialServerPostsResponse;
+use Fixpunkt\FpSocialBridge\v2\Response\SocialServerRateLimitResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 

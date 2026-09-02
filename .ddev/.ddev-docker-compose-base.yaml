@@ -27,6 +27,7 @@ services:
       - .:/mnt/ddev_config
       - ./db_snapshots:/mnt/snapshots
        
+      
       - ddev-global-cache:/mnt/ddev-global-cache
     restart: "no"
 
@@ -36,7 +37,6 @@ services:
       - "127.0.0.1:$DDEV_HOST_DB_PORT:3306"
     environment:
       - COLUMNS
-      - BITNAMI_VOLUME_DIR=
       - DDEV_DATABASE
       - DDEV_DATABASE_FAMILY
       - DDEV_GID
@@ -68,7 +68,6 @@ services:
       - POSTGRES_PASSWORD=db
       - POSTGRES_USER=db
       - POSTGRES_DB=db
-      - HOME=/home/yannik
       - TZ=Europe/Berlin
       - USER=yannik
     command: ${DDEV_DB_CONTAINER_COMMAND}
@@ -118,6 +117,16 @@ services:
 
     restart: "no"
     user: '$DDEV_UID:$DDEV_GID'
+    # Group 0 (root) is added here because Docker does not derive supplementary
+    # groups from /etc/group when both uid and gid are given explicitly (as
+    # above); it must be requested with group_add. This lets the container user
+    # read/write directories baked group-writable-by-root in the image (e.g.
+    # /usr/local/n, see containers/ddev-php-base/Dockerfile and the useradd
+    # command in WriteBuildDockerfile), instead of DDEV chgrp/chmod'ing them
+    # for every project. See
+    # https://developers.redhat.com/blog/2020/10/26/adapting-docker-and-kubernetes-containers-to-run-on-red-hat-openshift-container-platform
+    group_add:
+      - "0"
     hostname: fp-social-web
 
     ports:
@@ -200,7 +209,7 @@ services:
       timeout: "70s"
   
   xhgui:
-    image: ddev/ddev-xhgui:v1.25.3
+    image: ddev/ddev-xhgui:v1.25.4
     container_name: ddev-${DDEV_SITENAME}-xhgui
     profiles:
       - xhgui
