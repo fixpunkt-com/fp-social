@@ -4,6 +4,9 @@ parameters:
         - ../Classes
     bootstrapFiles:
         - vendor/autoload.php
+    # Ob PHPStan den v12-Zweig überhaupt meldet, hängt davon ab, wie gut die jeweilige
+    # Version den interface_exists()-Guard auswertet. Beides ist in Ordnung.
+    reportUnmatchedIgnoredErrors: false
     ignoreErrors:
         # ViewFactoryData/ViewFactoryInterface exist only in TYPO3 v13.3+/v14. The v12 code path
         # is guarded at runtime by interface_exists(ViewFactoryInterface::class) and never runs here.

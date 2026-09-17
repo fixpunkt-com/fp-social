@@ -1,6 +1,7 @@
 # Keep development/CI artefacts out of the distributed package (Packagist/TER).
 /.build/                export-ignore
 /.build-v12/            export-ignore
+/.build-v13/            export-ignore
 /.github/               export-ignore
 /.ddev/                 export-ignore
 /.idea/                 export-ignore
