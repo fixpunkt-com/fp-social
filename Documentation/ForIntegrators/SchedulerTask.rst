@@ -32,6 +32,21 @@ The following tasks are available to you:
 
     *   ``days`` (required): Number of days after which posts are deleted.
 
+*   ``fp_social:removeduplicates``: Removes posts that were imported a second
+    time while they were hidden. Of every post that exists more than once for
+    the same network and post id, the oldest record is kept -- that is the one
+    carrying the decision of the editor -- and the copies are deleted together
+    with their post links, images and hashtags that are then unused.
+
+    *   ``--force`` (optional): Apply the changes. Without it the command only
+        reports what it would do and changes nothing.
+
+..  note::
+    ``fp_social:removeduplicates`` is a one-time cleanup, not a recurring task.
+    It repairs data that was created before version 17.7.2, so run it once after
+    the update. Running it before the update has no lasting effect, because the
+    next synchronization would create the copies again.
+
 ..  note::
     If the social server has reached a request limit, ``fp_social:synchronize``
     reports the affected account as ``Synchronization deferred`` and carries on

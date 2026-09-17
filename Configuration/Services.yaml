@@ -33,6 +33,10 @@ services:
     tags:
       - name: 'console.command'
         command: 'fp_social:remove'
+  Fixpunkt\FpSocial\Command\RemoveDuplicates:
+    tags:
+      - name: 'console.command'
+        command: 'fp_social:removeduplicates'
 
   # event listener
   Fixpunkt\FpSocial\EventListener\AccountUpdatedListener:
