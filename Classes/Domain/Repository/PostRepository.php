@@ -59,6 +59,7 @@ class PostRepository extends Repository
      */
     public function findOrCreatePost(Account $account, string $postId): Post
     {
+        // Prüfe ob der Post schon in der Datenbank vorhanden - auch wenn er ausgeblendet ist
         $query = $this -> createQuery();
         $query -> getQuerySettings()
             -> setRespectStoragePage(false)
