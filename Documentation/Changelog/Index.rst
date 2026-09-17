@@ -7,6 +7,12 @@ Changelog
 Unreleased
 ==========
 
+*   Posts that were hidden in the backend module stay hidden. Until now the
+    synchronization did not find them again and imported them a second time as
+    a visible copy. The same happened on accounts that require approval, where
+    every post that had not been approved yet was duplicated on each run. The
+    new command ``fp_social:removeduplicates`` cleans up the copies that were
+    already created, see :ref:`scheduler-task`.
 *   The social server now limits how often its API may be called -- requests to
     the same social media profile and the overall number of requests are each
     capped per API user. Synchronization no longer treats a reached limit as a

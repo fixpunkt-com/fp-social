@@ -59,11 +59,17 @@ class PostRepository extends Repository
      */
     public function findOrCreatePost(Account $account, string $postId): Post
     {
-        // Prüfe ob der Post schon in der Datenbank vorhanden
-        $post = $this -> findOneBy([
-            'accounts.account.network' => $account -> getNetwork(),
-            'id' => $postId,
-        ]);
+        $query = $this -> createQuery();
+        $query -> getQuerySettings()
+            -> setRespectStoragePage(false)
+            -> setIgnoreEnableFields(true);
+        $query -> matching(
+            $query -> logicalAnd(
+                $query -> equals('accounts.account.network', $account -> getNetwork()),
+                $query -> equals('id', $postId),
+            )
+        );
+        $post = $query -> execute() -> getFirst();
 
         // Prüfen ob der Post neu angelegt wurde
         if (!$post && array_key_exists($account -> getUid(), $this -> newlyCreatedPosts) && array_key_exists($postId, $this -> newlyCreatedPosts[$account -> getUid()])) {
