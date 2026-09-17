@@ -96,7 +96,7 @@ class RemoveDuplicates extends Command
         foreach ($plans as $plan) {
             $output -> writeln(sprintf(
                 '%s %s: keep post %d%s, remove post %s',
-                $plan['network'],
+                $this -> networkLabel($plan['network']),
                 $plan['id'],
                 $plan['keepUid'],
                 $plan['keepHidden'] ? ' (hidden)' : '',
@@ -119,7 +119,7 @@ class RemoveDuplicates extends Command
         foreach ($skipped as $plan) {
             $output -> writeln(sprintf(
                 '<comment>skipped %s %s: %s</comment>',
-                $plan['network'],
+                $this -> networkLabel($plan['network']),
                 $plan['id'],
                 implode('; ', $plan['blocked'])
             ));
@@ -625,6 +625,17 @@ class RemoveDuplicates extends Command
                 )
             )
             -> executeStatement();
+    }
+
+    /**
+     * Das Netzwerk steht als Klassenname in der Datenbank, im Report genügt der kurze Name.
+     * @param string $network
+     * @return string
+     */
+    private function networkLabel(string $network): string
+    {
+        $short = strrchr($network, '\\');
+        return $short === false ? $network : substr($short, 1);
     }
 
     /**
