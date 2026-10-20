@@ -123,7 +123,7 @@ class ImageUtility
 
         // Prüfen ob etwas heruntergeladen wurde.
         if ($download === false) {
-            throw new \Exception('Die Datei konnte nicht heruntergeladen werden!');
+            throw new \Exception('Die Datei konnte nicht heruntergeladen werden!', 4496819608);
         }
 
         // Datei auf Bild prüfen
@@ -160,7 +160,7 @@ class ImageUtility
             ])
             ->executeStatement();
         if ($affectedRows == 0) {
-            throw new \Exception('Es konnte keine FileReference angelegt werden!');
+            throw new \Exception('Es konnte keine FileReference angelegt werden!', 8755894847);
         }
 
         // File Reference ausgeben
@@ -176,7 +176,7 @@ class ImageUtility
                 return $extbaseFileReference;
             }
         }
-        throw new \Exception('Die gewünschte FileReference konnte nicht gefunden werden!');
+        throw new \Exception('Die gewünschte FileReference konnte nicht gefunden werden!', 1797458115);
     }
 
     /**

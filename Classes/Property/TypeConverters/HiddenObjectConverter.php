@@ -14,7 +14,7 @@ class HiddenObjectConverter extends PersistentObjectConverter
     /**
      * @var string
      */
-    protected $targetType = 'Fixpunkt\\FpSocial\\Domain\\Model\\Post';
+    protected $targetType = \Fixpunkt\FpSocial\Domain\Model\Post::class;
     /**
      * @var int
      */

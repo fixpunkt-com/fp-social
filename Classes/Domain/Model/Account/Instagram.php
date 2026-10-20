@@ -94,7 +94,7 @@ class Instagram extends Account
         }
         $mode = LocalizationUtility::translate(
             'tx_fpsocial_domain_model_account.in_hashtag_mode.' . $data['in_hashtag_mode'],
-            'fp_social'
+            'FpSocial'
         );
         return self::DESCRIPTION . ': #' . $data['in_hashtag'] . ' (' . $mode . ') durch @' . $data['label'] . ' (' . $data['channel'] . ')';
 

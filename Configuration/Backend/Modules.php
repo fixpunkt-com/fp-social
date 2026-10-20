@@ -18,7 +18,7 @@ return [
         'iconIdentifier' => 'fpsocial-bemodules-manage',
         'labels' => 'LLL:EXT:fp_social/Resources/Private/Language/locallang_module_manage.xlf',
         'extensionName' => 'FpSocial',
-        'navigationComponent' => '@typo3/backend/page-tree/page-tree-element',
+        'navigationComponent' => '@typo3/backend/tree/page-tree-element',
         'controllerActions' => [
             AccountController::class => 'list, show, update',
             SynchronizationController::class => 'list, update, account, post',

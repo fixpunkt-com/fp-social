@@ -13,7 +13,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class AccessRepository extends Repository
 {
-    public function initializeObject()
+    public function initializeObject(): void
     {
         // Zugangsdaten liegen in einem beliebigen Ordner - die Storage-Page darf nicht greifen.
         $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);

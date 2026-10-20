@@ -234,7 +234,7 @@ class Post extends AbstractEntity
     /**
      * @param Picture $picture
      */
-    public function addPictures(Picture $picture)
+    public function addPictures(Picture $picture): void
     {
         if (!$this -> hasPicture($picture)) {
             $this->pictures->attach($picture);
@@ -243,7 +243,7 @@ class Post extends AbstractEntity
     /**
      * @param Picture $picture
      */
-    public function removePictures(Picture $picture)
+    public function removePictures(Picture $picture): void
     {
         $this->pictures->detach($picture);
     }
@@ -257,7 +257,7 @@ class Post extends AbstractEntity
     /**
      * @param ObjectStorage $pictures
      */
-    public function setPictures(ObjectStorage $pictures)
+    public function setPictures(ObjectStorage $pictures): void
     {
         $this->pictures = $pictures;
     }
@@ -293,14 +293,14 @@ class Post extends AbstractEntity
     /**
      * @param PostLink $account
      */
-    public function addAccounts(PostLink $account)
+    public function addAccounts(PostLink $account): void
     {
         $this->accounts->attach($account);
     }
     /**
      * @param PostLink $account
      */
-    public function removeAccounts(PostLink $account)
+    public function removeAccounts(PostLink $account): void
     {
         $this->accounts->detach($account);
     }
@@ -334,7 +334,7 @@ class Post extends AbstractEntity
     /**
      * @param ObjectStorage $accounts
      */
-    public function setAccounts(ObjectStorage $accounts)
+    public function setAccounts(ObjectStorage $accounts): void
     {
         $this->accounts = $accounts;
     }
@@ -380,7 +380,7 @@ class Post extends AbstractEntity
     /**
      * @param Picture $selectedPicture
      */
-    public function setSelectedPicture(Picture $selectedPicture)
+    public function setSelectedPicture(Picture $selectedPicture): void
     {
         $this -> selectedPicture = $selectedPicture;
     }

@@ -16,7 +16,7 @@ class Labels
      * @param $parameters
      * @param $parentObject
      */
-    public function post(&$parameters, $parentObject)
+    public function post(&$parameters, $parentObject): void
     {
         if (!($parameters['table'] ?? null) || !($parameters['row']['uid'] ?? null)) {
             return;
@@ -55,7 +55,7 @@ class Labels
      * @param $parameters
      * @param $parentObject
      */
-    public function account(&$parameters, $parentObject)
+    public function account(&$parameters, $parentObject): void
     {
         if (!($parameters['table'] ?? null) || !($parameters['row']['uid'] ?? null)) {
             return;

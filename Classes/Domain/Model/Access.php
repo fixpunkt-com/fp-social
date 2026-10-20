@@ -274,9 +274,9 @@ class Access extends AbstractEntity
                 $socialServerResponse -> getCode()
             );
         } catch (ConnectException $e) {
-            throw new \Exception('Die Adresse des Social Server konnte nicht aufgelöst werden. Überprüfe die API-Url in den Extension-Einstellungen.');
+            throw new \Exception('Die Adresse des Social Server konnte nicht aufgelöst werden. Überprüfe die API-Url in den Extension-Einstellungen.', 1788704419);
         } catch (RequestException $e) {
-            throw new \Exception('Das angegebene Protokoll wird nicht unterstützt. Überprüfe die API-Url in den Extension-Einstellungen.');
+            throw new \Exception('Das angegebene Protokoll wird nicht unterstützt. Überprüfe die API-Url in den Extension-Einstellungen.', 9486202807);
         }
 
         // Antwort verarbeiten

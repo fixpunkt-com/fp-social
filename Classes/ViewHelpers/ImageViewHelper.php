@@ -18,21 +18,10 @@ class ImageViewHelper extends AbstractViewHelper
     protected ImageUtility $imageUtility;
     /** @var PictureRepository  */
     protected PictureRepository $imageRepository;
-
-    /**
-     * @param ImageUtility $imageUtility
-     */
-    public function injectImageUtility(ImageUtility $imageUtility): void
+    public function __construct(\Fixpunkt\FpSocial\Utilities\ImageUtility $imageUtility, \Fixpunkt\FpSocial\Domain\Repository\PictureRepository $imageRepository)
     {
         $this->imageUtility = $imageUtility;
-    }
-
-    /**
-     * @param PictureRepository $imageRepository
-     */
-    public function injectImageRepository(PictureRepository $imageRepository): void
-    {
-        $this -> imageRepository = $imageRepository;
+        $this->imageRepository = $imageRepository;
     }
 
     /**
